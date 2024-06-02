@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSC256 1.2</title>
+    <link rel="stylesheet" type="text/css" href="..\Styles\MAIN.css">
+    <script src ="../Scripts/JavaIndexScript.js"></script>
+</head>
+<body>
+    <!--HERO-->
+    <section id="HeroSect">
+        <hr class="border_line" style="margin:15px;">
+        <div id="NameBox">
+            <h2 id = "Intro"></h2>
+            <h1 id="NameH1"></h1>
+        </div>
+    </section>
+    
+    <!--Education-->
+    <section id="EduSect">
+        <!--Graduation-->
+        <div id="GradBox">
+            <h1 id="GradLabel"></h1>
+            <hr class="border_line">
+        </div>
+        <!--Majors-->
+        <div id="MajorBox" >
+            <div id="Major_ACS" class="Major">
+                <h3 id = "Major_Name1"></h3>
+                <p id = "MajorType1"></p>
+            </div>
+            <div id="Major_GP" class="Major">
+                <h3 id="Major_Name2"></h3>
+                <p id = "MajorType2"></p>
+            </div>
+        </div>
+    </section>
+    
+    <!--Contact-->
+    <section id="ContactSect">
+        <div id="ContactBox">
+            <div id="ContactLabel" style="flex:1;">
+                <h1 id="ContactlabelTxt"></h1>
+            </div>
+            <h1 id = "Email" style="flex:1;"></h1>
+        </div>
+    </section>
+    
+    <section id="PageLinkSect">
+        <a id="pageAnchor" href="../Pages/INDEX.html"></a>
+
+    </section>
+
+    <footer style="text-align:center">
+        <hr class="border_line">
+        <p id = "Credits"></p>
+        <p id = "Date"></p>
+        <hr class="border_line">
+    </footer>
+
+    <!--include the information via .js file that's sourced in the Head section-->
+    <script>setPageDetails();</script>
+</body>
+</html>

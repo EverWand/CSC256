@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSC256 4.2 - SlideShow</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
+    <script src="../Scripts/slideshow.js"></script>
+</head>
+<body>
+    <section>
+        <h1>Gallery Version 1 - SlideShow</h1>
+        <div id= "SlidesBox">
+            <button onclick="PrevSlide()">Prev.</button>
+            <img id="slide-img" src="">
+            <button onclick="NextSlide()">Next</button>
+        </div>
+    </section>
+    <script>
+        ChangeImage(0); //Start on the first image in the slide list
+        StartSlideTimer(3); //Set an automatic slide timer for 3 seconds
+    </script>
+    
+    <section id = "PanelGallery" >
+    <h1>Gallery Version 2 - Panels</h1>
+    <p>I wanted to study another way to make a Gallery, here's the results!</p>
+        <div id ="ImageFlexBox">
+            <div class="Panel">
+                <img class="FlexImg" src="../Assets/Images/GodotJar.png">
+            </div>
+            <div class="Panel">
+                <img class="FlexImg" src="../Assets/Images/Tacos.png">
+            </div>
+            <div class="Panel">
+                <img class="FlexImg" src="../Assets/Images/Stairs.png">
+            </div>
+            <div class="Panel">
+                <img class="FlexImg" src="../Assets/Images/Menacing.png">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p id="credits">Page Created by Lucas Foxworthy</p>
+        <p id="date">Last Updated: 6/6/2024</p>
+    </footer>
+</body>
+</html>

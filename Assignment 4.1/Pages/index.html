@@ -1,30 +1,45 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Declare this a html file-->
 
 <html>
+<!--THE HEAD-->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>CSC256 4.2 - SlideShow</title>
+    <!--Link the main stylesheet to the document-->
     <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
+    <!--Attatch the slideshow script to the document-->
     <script src="../Scripts/slideshow.js"></script>
 </head>
+<!--THE BODY-->
 <body>
-    <section>
-        <h1>Gallery Version 1 - SlideShow</h1>
-        <div id= "SlidesBox">
+    
+    <!--Make a Gallery Section [Slide Show]-->
+    <section id="GallerySect">
+        <!--Title of the Gallery-->
+        <div id="GalleryTitle">
+            <h1>Gallery Version 1 - SlideShow</h1>
+            <p>Automatic slideshow that iterates through images with a way to manually go to slides</p>
+        </div>
+        <!--Display for the gallery-->
+        <div id= "GalleryDisplay">
+            <!--Button that switches to the prior image-->
             <button onclick="PrevSlide()">Prev.</button>
+            <!--Image meant to be given by a .js file-->
             <img id="slide-img" src="">
+            <!--Button that switches to the next image-->
             <button onclick="NextSlide()">Next</button>
         </div>
     </section>
+    <!--Functions for this gallery section-->
     <script>
         ChangeImage(0); //Start on the first image in the slide list
         StartSlideTimer(3); //Set an automatic slide timer for 3 seconds
     </script>
-    
-    <section id = "PanelGallery" >
-    <h1>Gallery Version 2 - Panels</h1>
-    <p>I wanted to study another way to make a Gallery, here's the results!</p>
-        <div id ="ImageFlexBox">
+    <hr style="margin-left: 5vw; margin-right: 5vw;">
+    <!--WANTED TO TEST SOMETHING - Making iteractive Panels for a gallery-->
+    <section id = "GallerySect">
+        <!--Display for the gallery-->
+        <div id ="GalleryDisplay">
             <div class="Panel">
                 <img class="FlexImg" src="../Assets/Images/GodotJar.png">
             </div>
@@ -38,10 +53,20 @@
                 <img class="FlexImg" src="../Assets/Images/Menacing.png">
             </div>
         </div>
+        <!--Title of the Gallery-->
+        <div id="GalleryTitle">
+            <h1>Gallery Version 2 - Panels</h1>
+            <p>I wanted to study another way to make a Gallery, here's the results!</p>
+            <p>A way to display images using interactive growing panels</p>
+        </div>
     </section>
+
+    <!--FOOTER SECTION-->
     <footer>
-        <p id="credits">Page Created by Lucas Foxworthy</p>
-        <p id="date">Last Updated: 6/6/2024</p>
+        <p id="credits">Page Created | Images taken</p>
+        <p> by Lucas Foxworthy</p>
+        <hr>
+        <p id="date">Last Updated: 6/7/2024</p>
     </footer>
 </body>
 </html>

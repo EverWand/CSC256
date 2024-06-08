@@ -1,47 +1,67 @@
+/*====| General |====*/
+/*body section*/
 body{
-    margin: 0;
+    background-color: ghostwhite;   /*Sets a background color*/
+    margin: 0;  /*remove the margin*/
 }
-
+/*images*/
 img{
-    max-width: 100%;
+    height: 100%;       /*Set the element height to its container*/
+    width: 100%;        /*set the element width to it's container*/
+    object-fit:cover;   /*Make sure the aspect ratio covers it's container*/
+    border-radius: 25px;/*round the border*/ 
+}
+/*footer section*/
+footer{
+    text-align: center;             /*center the text to the middle of the container*/
+    padding: 28px;                  /*Add Padding*/
+    background-color: slategrey;  /*Set a background color*/
+    color: ghostwhite;            /*set the text color*/
+}
+/*Line*/
+hr{
+    margin-left: 30vw;  /*Set left-most margin*/
+    margin-right: 30vw; /*Set right-most margin*/
 }
 
-
-#SlidesBox{
-    max-width: 800px;
-    height: 450px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin: 0 auto; /*Center the Images*/
-    justify-content: center;
+/*====| Gallery |====*/
+/*Section where there will be a gallery*/
+#GallerySect{
+    display: flex;  /*make this container a flexbox*/
+    padding: 28px;  /*add padding*/
+    gap: 20px;      /*Puts gaps in each element in the container*/
 }
-#ImageFlexBox{    
-    max-width: 800px;
-    height: 450px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin: 0 auto; /*Center the Images*/
-    justify-content: center;
+/*ID for where the gallery is displayed*/
+#GalleryDisplay{
+    max-width: 750px;   /*restrict the height*/
+    height: 400px;      /*set the height*/
+    display: flex;      /*Make this container a flexbox*/
+    gap: 10px;          /*put gaps in each element in the container*/
+    margin: 0 auto;     /*Center the Images*/
+    flex: 1;            /*Keep this as 1 piece to the flexbox it's in*/
+}
+/*Buttons within the Gallery Display ID*/
+#GalleryDisplay button{
+    max-height: 100px;  /*Limit the maximum height*/
+    min-height: 50px;   /*limit the minimum height*/
+    align-self: center; /*center itself in the line it's in*/
+}
+/*Title of the Gallery*/
+#GalleryTitle{
+    flex: .45;              /*takes .45 pieces of the flexbox*/
+    align-content: center;  /*Center the content with it's line |---|*/
+    text-align: center;     /*Center the test to the */    
 }
 
-.Panel img{
-    display: flex;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    object-fit: cover;
-}
-
+/*====| Panel Gallery |====*/
+/*Panel Class*/
 .Panel{
-    flex: 1 1 0%;
-    overflow: hidden;
-    border-radius: 25px;
-    transition: 0.5s ease-in-out;
+    flex: 1;                        /*takes one piece of the flexbox*/
+    overflow: hidden;               /*Hide the content that does not fit in the panel*/
+    transition: 0.5s ease-in-out;   /*ease in/out of any changes to this style*/
 }
-
+/*When a Panel class has been hovered on*/
 .Panel:hover{
-    flex: 2.5 10%;
-    transition: 0.3s ease-in-out;
+    flex: 3;                        /*takes 3 pieces of the flexbox*/
+    transition: 0.3s ease-in-out;   /*ease in/out of any changes to this style*/
 }

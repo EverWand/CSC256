@@ -5,17 +5,28 @@
         <meta charset="utf-8">
         <title>CSC256 5.1: Manipulating Data with JavaScript</title>
         <!--Link the main stylesheet to the document-->
-        <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
+        <link rel="stylesheet" type="text/css" href="../Styles/MainStyles.css">
         <!--Attatch the slideshow script to the document-->
-        <script src="../Scripts/slideshow.js"></script>
+        <script src="../Scripts/MovieList.js"></script>
     </head>
+
     <body>
-        
+        <section id="HeroSect">
+            <h1>Make A Movie List</h1>
+        </section>
+        <section id="MovieSect"> 
+            <div id="MovieSubmitContainer">
+                <form>
+                    <label>Movie Title: </label>
+                    <input type="text">
+                </form>
+                <button onclick="AddMovie()">Add Movie!</button>
+            </div>
+        </section>
         <footer>
             <p id="credits">Page Created by Lucas Foxworthy </p>
             <hr>
-            <p id="date">Last Updated: 6/13/2024</p>
+            <p id="date">Last Updated: 6/14/2024</p>
         </footer>
     </body>
-
 </html>

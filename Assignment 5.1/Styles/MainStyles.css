@@ -1,0 +1,30 @@
+body{
+    margin:0;
+    background-color: ghostwhite;
+}
+section{
+    margin-bottom: 28px; /*Make a margin the the bottom of new sections*/
+}
+footer{
+    background-color: slategrey;
+    text-align: center;
+    align-content: center;
+    color:ghostwhite;
+    height: 20vh;
+}
+
+#HeroSect{
+    text-align: center;
+    align-content: center;
+    background-color: slategrey;
+    color: ghostwhite;
+    padding:50px;
+}
+
+#MovieSubmitContainer{
+    text-align-last: right; 
+    width:fit-content; 
+    padding: 15px; 
+    margin:0 auto; 
+    border: 3px black solid;
+}

@@ -13,6 +13,7 @@ footer{
     height: 20vh;
 }
 
+
 #HeroSect{
     text-align: center;
     align-content: center;
@@ -27,4 +28,15 @@ footer{
     padding: 15px; 
     margin:0 auto; 
     border: 3px black solid;
+    border-radius: 15px;
+
+}
+
+#MovieSubmitContainer button{
+    margin-top: 15px;
+    background-color: teal;
+    padding: 8px;
+    color:ghostwhite;
+    border-color: grey;
+    border-radius: 20px;
 }

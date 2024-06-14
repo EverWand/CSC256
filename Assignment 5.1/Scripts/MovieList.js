@@ -18,7 +18,7 @@ function AddMovie(movieTitle){
 
 function UpdateMovieListDisplay(){
     var FormattedMovieList = []; //empty array to hold html formatted movie list
-    var divMovies = document.getElementById("MOVIEDIV ID");
+    var divMovies = document.getElementById("MovieListDisplay");
 
     //Loop that goes through each submitted movie in the movie list
     for(var i=0; i < MovieList.length; i++){

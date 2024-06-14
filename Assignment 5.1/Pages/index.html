@@ -16,12 +16,18 @@
         </section>
         <section id="MovieSect"> 
             <div id="MovieSubmitContainer">
+                <h1>Submit a Movie</h1>
                 <form>
                     <label>Movie Title: </label>
-                    <input type="text">
+                    <input type="text" id="MovieName">
                 </form>
                 <button onclick="AddMovie()">Add Movie!</button>
+                <button onclick="clearMovieList()">Clear List</button>
             </div>
+        </section>
+        <section id="MovieListSect">
+            <h1>Your Movie List:</h1>
+            <div id = "MovieListDisplay"></div>
         </section>
         <footer>
             <p id="credits">Page Created by Lucas Foxworthy </p>

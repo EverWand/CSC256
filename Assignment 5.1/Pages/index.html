@@ -21,14 +21,18 @@
                     <label>Movie Title: </label>
                     <input type="text" id="MovieName">
                 </form>
-                <button onclick="AddMovie()">Add Movie!</button>
-                <button onclick="clearMovieList()">Clear List</button>
+                <div id="MovieFormOptions">
+                    <button id="MovieSubmit" onclick="addMovie()">Add Movie!</button>
+                    <button id="MovieClear" onclick="clearMovieList()">Clear List</button>
+                </div>
+            </div>
+            <div class="VertLine" style="width: 3px; background-color: black;"></div>
+            <div style = "flex: 2;">
+                <h1>Your Movie List:</h1>
+                <div id = "MovieListDisplay"></div>
             </div>
         </section>
-        <section id="MovieListSect">
-            <h1>Your Movie List:</h1>
-            <div id = "MovieListDisplay"></div>
-        </section>
+
         <footer>
             <p id="credits">Page Created by Lucas Foxworthy </p>
             <hr>

@@ -22,21 +22,44 @@ footer{
     padding:50px;
 }
 
+#MovieSect{
+    display: flex;
+    column-gap: 28px;
+    text-align: center;
+    align-content: center;
+    margin:28px;
+    margin-left: 20vw;
+    flex-wrap: wrap;
+}
+
 #MovieSubmitContainer{
     text-align-last: right; 
-    width:fit-content; 
+    max-width:fit-content; 
+    height: 150px;
     padding: 15px; 
     margin:0 auto; 
     border: 3px black solid;
     border-radius: 15px;
-
+    flex: 1;
 }
 
-#MovieSubmitContainer button{
+#MovieSubmit{
     margin-top: 15px;
     background-color: teal;
     padding: 8px;
     color:ghostwhite;
     border-color: grey;
     border-radius: 20px;
+}
+
+#MovieClear{
+    background-color: ghostwhite;
+    border-style: none;
+    color: darkred;
+}
+#MovieClear:hover{
+    color: red;
+}
+#MovieClear:active{
+    color: brown;
 }

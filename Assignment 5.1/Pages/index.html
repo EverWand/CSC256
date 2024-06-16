@@ -1,42 +1,52 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--This is an html document-->
 
 <html>
+    <!--HEAD SECTION-->
     <head>
         <meta charset="utf-8">
-        <title>CSC256 5.1: Manipulating Data with JavaScript</title>
+        <title>CSC256 5.1: Manipulating Data with JavaScript</title> <!--Page's Title-->
         <!--Link the main stylesheet to the document-->
         <link rel="stylesheet" type="text/css" href="../Styles/MainStyles.css">
         <!--Attatch the slideshow script to the document-->
         <script src="../Scripts/MovieList.js"></script>
     </head>
 
+<!--Body Section-->
     <body>
+        <!--Hero section-->
         <section id="HeroSect">
             <h1>Make A Movie List</h1>
         </section>
+        <!--Movie Section-->
         <section id="MovieSect"> 
+            <!--Container for the Form details-->
             <div id="MovieSubmitContainer">
                 <h1>Submit a Movie</h1>
+                <!--Movie submission form-->
                 <form>
-                    <label>Movie Title: </label>
-                    <input type="text" id="MovieName">
+                    <label>Movie Title: </label>        <!--Label for the textbox-->
+                    <input type="text" id="MovieName">  <!--Text box for user to type in movies-->
                 </form>
+                <!--Options for the submission form-->
                 <div id="MovieFormOptions">
-                    <button id="MovieSubmit" onclick="addMovie()">Add Movie!</button>
-                    <button id="MovieClear" onclick="clearMovieList()">Clear List</button>
+                    <button id="MovieSubmit" onclick="addMovie()">Add Movie!</button>       <!--Button to Add Movies-->
+                    <button id="MovieClear" onclick="clearMovieList()">Clear List</button>  <!--Button to delete the saved list-->
                 </div>
             </div>
+            <!--Line to seperate the movie Form and the movie list-->
             <div class="VertLine" style="width: 3px; background-color: black;"></div>
-            <div style = "flex: 2;">
+            <!--Movie List Display-->
+            <div style = "flex: 2;"> <!--Takes up 2 pieces of the flex box-->
                 <h1>Your Movie List:</h1>
-                <div id = "MovieListDisplay"></div>
+                <div id = "MovieListDisplay"></div> <!--Container where it adds the submitted movies-->
             </div>
         </section>
 
+        <!--Footer Section-->
         <footer>
             <p id="credits">Page Created by Lucas Foxworthy </p>
             <hr>
-            <p id="date">Last Updated: 6/14/2024</p>
+            <p id="date">Last Updated: 6/15/2024</p>
         </footer>
     </body>
 </html>

@@ -1,65 +1,77 @@
+/*Styles for the whole body*/
 body{
-    margin:0;
-    background-color: ghostwhite;
+    margin:0;                          /*have sections touch the edges of the vieport*/
+    background-color: ghostwhite;   /*Changed the Color of the background*/
 }
+/*Styles for each section*/
 section{
     margin-bottom: 28px; /*Make a margin the the bottom of new sections*/
 }
+/*styles for the footer section*/
 footer{
-    background-color: slategrey;
-    text-align: center;
-    align-content: center;
-    color:ghostwhite;
+    background-color: slategrey;    /*Changed the Color of the background*/
+    text-align: center;               /*Centers the text*/
+    align-content: center;            /*Align the contents to the middle of the container, vertically centered*/
+    color:ghostwhite;               /*Changes the color of text*/
     height: 20vh;
 }
 
-
+/*styles for the Hero Section*/
 #HeroSect{
-    text-align: center;
-    align-content: center;
-    background-color: slategrey;
-    color: ghostwhite;
-    padding:50px;
+    text-align: center;               /*Centers the text*/
+    align-content: center;            /*Align the contents to the middle of the container, vertically centered*/
+    background-color: slategrey;    /*Changed the Color of the background*/
+    color: ghostwhite;              /*Changes the color of text*/
+    padding:50px;                     /*Adjusts the padding of the container*/
 }
 
+/*Movie Form Section*/
 #MovieSect{
-    display: flex;
-    column-gap: 28px;
-    text-align: center;
-    align-content: center;
-    margin:28px;
-    margin-left: 20vw;
-    flex-wrap: wrap;
+    display: flex;          /*Make it a flex box*/
+    column-gap: 28px;       /*Creates a space inbetween the columns in the flex box*/
+    text-align: center;     /*Centers the text*/
+    align-content: center;  /*Align the contents to the middle of the container, vertically centered*/
+    margin:28px;            /*Set the containers margin*/
+    margin-left: 20vw;      /*Set the Left-most margin for the container*/
 }
 
+/*Style for the container holding the movie form*/
 #MovieSubmitContainer{
-    text-align-last: right; 
-    max-width:fit-content; 
-    height: 150px;
-    padding: 15px; 
-    margin:0 auto; 
-    border: 3px black solid;
-    border-radius: 15px;
-    flex: 1;
+    text-align: right;          /*Align the Text in the contain to the right*/
+    max-width:fit-content;      /*Have the width not be able to go past the width of it's content*/
+    height: 150px;              /*Sets the container Height*/
+    padding: 15px;              /*Adjusts the padding of the container*/
+    margin:0 auto;              /*Center the container*/
+    border: 3px black solid;  /*Sets up a Border for the container*/
+    border-radius: 15px;        /*Rounds the border's corners*/
+    flex: 1;                    /*Make this 1 piece of the flexbox*/
 }
 
+/*Text input in the Movie Form*/
+#MovieName{
+    text-align: left; /*Set the text's alignment to the left side*/
+}
+/*Styles for the submit button in the Movie Form*/
 #MovieSubmit{
-    margin-top: 15px;
-    background-color: teal;
-    padding: 8px;
-    color:ghostwhite;
-    border-color: grey;
-    border-radius: 20px;
+    margin-top: 15px;          /*Adjust the top-most margin*/
+    background-color: teal; /*Changed the Color of the background*/
+    padding: 8px;             /*Adjusts the padding of the container*/  
+    color:ghostwhite;       /*Changes the color of the text*/
+    border-color: grey;     /*Changes the border's color*/
+    border-radius: 20px;      /*Rounds the border's corners*/
 }
 
+/*Styles for the Clear movie List Button*/
 #MovieClear{
-    background-color: ghostwhite;
-    border-style: none;
-    color: darkred;
+    background-color: ghostwhite;   /*Changed the Color of the background*/
+    border-style: none;               /*Remove the border*/
+    color: darkred;                 /*Changes the color of text*/
 }
+/*When the Clear Button is Hovered*/
 #MovieClear:hover{
-    color: red;
+    color: red; /*Changes the color of text*/
 }
+/*When Clear button is Pressed*/
 #MovieClear:active{
-    color: brown;
+    color: brown; /*Changes the color of text*/
 }

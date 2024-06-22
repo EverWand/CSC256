@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Assignment 6.1</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/mainStyle.css">
+    <script src="../Scripts/GameFormScript.js"></script>
+
+</head>
+
+<body>
+    <section>
+        <div>
+            <form>
+                <h2>Enter the Following Information</h2>
+                <!--USERNAME-->
+                <label for="UsernameInput">Username</label>
+                <input type="text" id="UsernameInput">
+                <!--WEAPON-->
+                <label for="WeaponInput">Weapon</label>
+                <input type="text" id="WeaponInput" name>
+                <!--HEALTH/DAMAGE-->
+                <label for="HealthInput">Health</label>
+                <input type="text" id="HealthInput" name="Health">
+                <!--POINTS-->
+                <label for="PointsInput">Total Points</label>
+                <input type="text" id="PointsInput" name="Total Points">
+            </form>
+            <!--SUBMIT-->
+            <button type="submit" onclick="SubmitPlayerInfo()">Submit Player Information</button>
+        </div>
+    </section>
+    <section>
+        <div id="PlayerContainer">
+            <h1>Player Info</h1>
+            <textarea id="FormOutput"></textarea>
+        </div>
+    </section>
+</body>

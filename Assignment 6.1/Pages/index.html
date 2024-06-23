@@ -1,38 +1,65 @@
 <!DOCTYPE html>
 
+<!--HEAD -->
 <head>
-    <title>Assignment 6.1</title>
-    <link rel="stylesheet" type="text/css" href="../Styles/mainStyle.css">
-    <script src="../Scripts/GameFormScript.js"></script>
-
+    <title>Assignment 6.1</title>   <!--Title of the webpage-->
+    <link rel="stylesheet" type="text/css" href="../Styles/mainStyle.css"> <!--Link stylesheet-->
+    <script src="../Scripts/GameFormScript.js"></script> <!--Attatch the Forms Script-->
 </head>
 
+<!--BODY-->
 <body>
-    <section>
-        <div>
-            <form>
-                <h2>Enter the Following Information</h2>
-                <!--USERNAME-->
-                <label for="UsernameInput">Username</label>
-                <input type="text" id="UsernameInput">
-                <!--WEAPON-->
-                <label for="WeaponInput">Weapon</label>
-                <input type="text" id="WeaponInput" name>
-                <!--HEALTH/DAMAGE-->
-                <label for="HealthInput">Health</label>
-                <input type="text" id="HealthInput" name="Health">
-                <!--POINTS-->
-                <label for="PointsInput">Total Points</label>
-                <input type="text" id="PointsInput" name="Total Points">
-            </form>
-            <!--SUBMIT-->
-            <button type="submit" onclick="SubmitPlayerInfo()">Submit Player Information</button>
-        </div>
+<!--HERO SECTION-->
+    <section id="HeroSect">
+        <h1>Hero Generator</h1>
+        <h2>Create your own Hero</h2>
     </section>
-    <section>
+
+<!--PLAYER INFORMATION SECTION-->
+    <section id="PlayerInfoSect">
+        <!--Container for the Player info input content-->
+        <div id = "FormContainer" class="centered, shadow">
+            <h2>Enter the Following Information</h2>
+            <!--form to input player information-->
+            <form>
+                <!--USERNAME-->
+                <div class="formItem">
+                    <label for="UsernameInput">Username</label> <!--Form Item Label-->
+                    <input type="text" id="UsernameInput" name="Username" required> <!--Form Item Text Input-->
+                </div>
+                <!--WEAPON-->
+                <div class="formItem">
+                    <label for="WeaponInput">Weapon</label> <!--Form Item Label-->
+                    <input type="text" id="WeaponInput" name="Weapon" required> <!--Form Item Text Input-->
+                </div>
+                <!--HEALTH/DAMAGE-->
+                <div class="formItem">
+                    <label for="HealthInput">Health</label> <!--Form Item Label-->
+                    <input type="text" id="HealthInput" name="Health" required> <!--Form Item Text Input-->
+                </div>
+                <!--POINTS-->
+                <div class="formItem">
+                    <label for="PointsInput">Total Points</label>   <!--Form Item Label-->
+                    <input type="text" id="PointsInput" name="Total Points" required>   <!--Form Item Text Input-->
+                </div>
+            </form>
+            <!--Submit Button that give the values to the output-->
+            <button class="primaryBtn" type="submit" onclick="SubmitPlayerInfo()">Generate Hero</button>
+        </div>
+        <!--Container for Displaying the Submitted player info-->
         <div id="PlayerContainer">
             <h1>Player Info</h1>
-            <textarea id="FormOutput"></textarea>
+            <!--Text Area that the input values are displayed-->
+            <textarea id="FormOutputDisplay" readonly></textarea> 
         </div>
     </section>
+
+<!--FOOTER SECTION-->
+    <footer>
+        <div id="CreditsContainer" class="centered">
+            <p>Page by Lucas Foxworthy</p>
+            <hr>
+            <p>Last Updated June 22, 2024</p>
+        </div>
+    </footer>
 </body>

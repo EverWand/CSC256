@@ -1,3 +1,107 @@
+/*GENERAL STYLES*/
+    /*Body styles*/
 body {
-    margin: 0;
+    margin: 0; /*remove the margin*/
+    background-color: #b64e5c; /*Sets a Background Color*/
+    color:#f4f8f6; /*Set text color*/
+}
+    /*Style for Header 1*/
+h1{
+    font-size: 45px; /*Adjusts the size of text*/
+}
+    /*style for labels*/
+label{
+    color: #84c3e1; /*Set text color*/
+}
+    /*style for sections*/
+section{
+    padding: 25px 10vw; /*Adjusts container padding*/
+}
+    /*style for the Hero and footer section*/
+#HeroSect, footer{
+    background-color: #d79190; /*Set background color*/
+}
+
+/*IDs*/
+    /*Player Information section*/
+#PlayerInfoSect{
+    display: flex;  /*Makes the container a flexbox*/
+    flex-direction: row;    /*Horizontally align the flexbox content*/
+    flex-wrap: wrap;    /*Have the flexbox content wrap when needed*/
+    gap: 10vw;  /*give space between flex content*/
+
+}
+
+    /*Container for the credits details*/
+#CreditsContainer{
+    width: fit-content;     /*have the width fit the content*/
+    height: 150px;          /*set the height*/
+    align-content: center;  /*Align content cross-ways*/
+}
+    /*Container that holds the plauyer info form*/
+#FormContainer{
+    background-color: #f4f8f6; /*Sets a Background Color*/
+    color: #b64e5c; /*Set text color*/
+    border-radius: 15px; /*rounds the edges of the container*/
+    width: fit-content; /*have the width fit to the content*/
+    height: fit-content;/*have the Height fit to the content*/
+    padding: 25px; /*Adjusts container padding*/
+}
+    /*the form inside the form container*/
+#FormContainer > form{
+    display: flex;  /*Makes the container a flexbox*/
+    flex-direction: column;  /*Vertically align the flexbox content*/
+    gap: 10px;  /*give space between flex content*/
+    width: fit-content; /*have the width fit  to the content*/
+    align-items:end;    /*align the container items to the end of their container*/
+}
+    /*the submit button inside the form container*/
+#FormContainer > .primaryBtn
+{
+    margin-top: 10%; /*set the top-most margin to a percentage of its container*/
+}
+    /*Output display*/
+#FormOutputDisplay{
+    width: fit-content; /*have the width fit to the content*/
+    min-width: 200px;   /*set minimum width*/
+    height: fit-content; /*have the height fit to the content*/
+    min-height: 250px; /*set minimum height*/
+    padding: 35px; /*Adjusts container padding*/
+    background-color:rgba(0,0,0, 0.2); /*Sets a Background Color, with alpha*/
+    color: #f4f8f6; /*Set text color*/
+    font-size: 25px; /*Adjusts the size of text*/
+    border:0px; /*remove the form border*/
+    border-radius: 15px; /*rounds the edges of the container*/
+}
+
+/*CLASSES*/
+    /*The primary button style*/
+.primaryBtn{
+    color: #f4f8f6; /*Set text color*/
+    background-color: #84c3e1; /*Sets a Background Color*/
+    border: 0px;    /*removes the border*/
+    border-radius: 2px; /*rounds the edges of the container*/
+    width: fit-content; /*have the width fit to the content*/
+    padding: 10px; /*Adjusts container padding*/
+    font-size: medium; /*Adjusts the size of text*/
+}
+
+/*When the Primary button class has been hovered over*/
+.primaryBtn:hover{
+    cursor: pointer; /*Change cursor image*/
+    background-color: #a5d9f1; /*Sets a Background Color*/
+}
+/*When the Primary button class is clicked on*/
+.primaryBtn:active{
+    background-color: #5694b1; /*Sets a Background Color*/
+}
+/*Class used to center tags*/
+.centered{
+    margin:0 auto; /*Center the container*/
+    text-align: center; /*Center the text*/
+    align-self: center; /*Align itself to the center of it's line*/
+}
+/*For adding shadows to tags*/
+.shadow{
+    box-shadow: 0px 1px 3px black; /*Add a shadow*/
 }

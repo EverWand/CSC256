@@ -1,0 +1,60 @@
+body{
+    margin: 0px;
+}
+
+section{
+    padding: 25px 10vw;
+}
+
+#HeaderSect{
+    text-align:center;
+    padding-bottom: 0;
+    max-height: 45vh;
+    overflow: hidden;
+}
+#HeaderSect > h1
+{
+    padding:0;
+    font-size: 150px;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#CWDisplaySect{
+    padding-top: 0;
+}
+table, tr{
+    margin:0px;
+    padding:0px;
+    border:1px solid black;
+    border-radius: 8px;
+}
+
+td{
+    padding:1px;
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: center;
+    border: 2px, solid, black;
+}
+
+input{
+    width:90%;
+    height: 90%;
+    background-color: ghostwhite;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.letter{
+    background-color: lightgrey;
+    border: 3px inset black;
+    border-collapse: collapse;
+}
+.centered{
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+}

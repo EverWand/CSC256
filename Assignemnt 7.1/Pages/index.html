@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Assignment 7.1 | Crossword</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/mainStyle.css"> 
+    <script src="../Scripts/Crossword.js"></script>
+</head>
+
+<body>
+    <section id="HeaderSect">
+        <h1> Crossword! </h1>
+    </section>
+
+    <section id="CWDisplaySect">
+        <hr><hr>
+        <table id="CWTable" class="centered"></table>
+        <script>
+            var table = document.getElementById("CWTable");
+                
+            BuildTable(table);
+
+            BuildClue(0, "across", 1,0, table,true);
+            BuildClue(1, "down", 0,1, table,false);
+            BuildClue(2, "down", 0,9, table,false);
+        </script>
+    </section>
+    <hr><hr>
+    <section id="HintSect">
+        <h1>Hints</h1>
+        <div id="HintContainer">
+            <ol id="AcrossHints">
+                <h2>Across</h2>
+                <hr>                
+                <li>Hint 1</li>
+                <input type="text">
+                <li>Hint 2</li>
+                <input type="text">
+                <li>Hint 3</li>
+                <input type="text">
+            </ol>
+            <ol id="DownHints">
+                <h2>Down</h2>
+                <hr>
+                <li>Hint 1</li>
+                <input type="text">
+                <li>Hint 2</li>
+                <input type="text">
+                <li>Hint 3</li>
+                <input type="text">
+            </ol>
+            <button class="PrimaryButton">Check Answers</button>
+        </div>
+    </section>
+</body>

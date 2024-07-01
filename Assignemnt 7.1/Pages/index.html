@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 7.1 | Crossword</title>
     <link rel="stylesheet" type="text/css" href="../Styles/mainStyle.css"> 
     <script src="../Scripts/Crossword.js"></script>
 </head>
 
 <body>
+    <!--HEADER SECTION-->
     <section id="HeaderSect">
         <h1> Crossword! </h1>
     </section>
 
+    <!--CROSSWORD DISPLAY-->
     <section id="CWDisplaySect">
         <hr><hr>
         <table id="CWTable" class="centered"></table>
         <script>
             var table = document.getElementById("CWTable");
-                
-            BuildTable(table);
+             
+            //Function used to reveal the answers
+            function ShowAnswers()
+            {
+                BuildClue(0, "down", 0,5, table,true);      //Word 1
+                BuildClue(1, "across", 2,1, table,true);    //Word 2
+                BuildClue(2, "down", 2,2, table,true);      //Word 3
+            }
 
-            BuildClue(0, "across", 1,0, table,true);
-            BuildClue(1, "down", 0,1, table,false);
-            BuildClue(2, "down", 0,9, table,false);
+            BuildTable(table); //Builds the Crossword table
+
+            BuildClue(0, "down", 0,5, table,false);      //Word 1
+            BuildClue(1, "across", 2,1, table,false);   //Word 2
+            BuildClue(2, "down", 2,2, table,false);     //Word 3
         </script>
     </section>
-    <hr><hr>
+    <hr><hr>+
+    <!--HINTS SECTION-->
     <section id="HintSect">
         <h1>Hints</h1>
         <div id="HintContainer">
+            <!--ACROSS-->
             <ol id="AcrossHints">
                 <h2>Across</h2>
-                <hr>                
-                <li>Hint 1</li>
-                <input type="text">
-                <li>Hint 2</li>
-                <input type="text">
-                <li>Hint 3</li>
-                <input type="text">
+                <hr>
+                <!--Across Hint 1-->
+                <li><p>A term for a female parent</p></li>
             </ol>
+            <!--DOWN-->
             <ol id="DownHints">
                 <h2>Down</h2>
                 <hr>
-                <li>Hint 1</li>
-                <input type="text">
-                <li>Hint 2</li>
-                <input type="text">
-                <li>Hint 3</li>
-                <input type="text">
+                <!--Down Hint 1-->
+            <li><p>A division of an act in a play or a movie setting.</p></li> 
+                <!--Down Hint 2-->    
+            <li><p>A word meaning completely different or contrary</p></li>
             </ol>
-            <button class="PrimaryButton">Check Answers</button>
+            <button class="PrimaryButton" onclick="ShowAnswers()">Check Answers</button>
         </div>
     </section>
 </body>

@@ -1,0 +1,60 @@
+/*Style for the overall body section*/
+body{
+    margin: 0;                      /*Remove Margin*/
+    text-align: center;             /*aligns text to the center of the line*/
+    background-color: #338567;    /*Adds color to the background*/
+    color: ghostwhite;            /*Changes the text color*/
+}
+
+/*styles for each section*/
+section{
+    padding: 2rem, 3rem;    /*adds padding to the container*/
+}
+
+/*Style for the Header text found inside of the Hero Section*/
+#HeroSect > h1{
+    font-size: 5rem;        /*Change the size of the font*/
+}
+
+/*Style for the Checker Table Container*/
+#CheckerTable{
+    row-gap: 0;                     /*remove*/
+    border: 25px outset #482029;  /*Adds a border*/
+    border-radius: 5px;             /*Rounds border edges*/
+    width: fit-content;             /*fit the width to the content*/
+    height: fit-content;            /*fit the height to the content*/
+    background-color: #443021;  /*Adds color to the background*/
+    text-align: center;             /*Aligns text to the center of the line*/
+}
+
+/*Style for the dividers found in the Board Display Section*/
+#BoardSect > div {
+    margin: 0px 10vw;                     /*Sets margin to the container*/   
+    padding: 2em;                         /*adds padding to the container*/
+    background-color: rgba(0,0,0, 0.3); /*Adds color to the background, with alpha value*/
+    border-radius: 25px;                  /*Rounds border edges*/
+    border: 3px solid rgba(0,0,0, 0.5); /*adds a border to the container, with alpha value*/
+}
+/*Class used to center containers*/
+.centered{
+    justify-content: center;    /*Center the content*/
+    margin: 0 auto;             /*center the container*/
+}
+
+/*Class to distinguish a cell in the Checker board*/
+.boardcell { 
+    height: 45px;   /*sets height of the container*/
+    width: 45px;    /*sets height of the container*/
+} 
+    
+/*class for the black squares on the Checker board*/
+.blackcell { 
+    background-color: #443021;        /*Adds color to the background*/
+    border: 2px inset #443021;        /*adds a border to the container*/
+} 
+    
+/*class for the White squares on the Checker board*/
+.whitecell { 
+    background-color: #886043;   /*Adds color to the background*/
+    border: 2px outset #886043;    /*adds a border to the container*/
+} 

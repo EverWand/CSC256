@@ -57,4 +57,26 @@ section{
 .whitecell { 
     background-color: #886043;   /*Adds color to the background*/
     border: 2px outset #886043;    /*adds a border to the container*/
-} 
+}
+
+.CheckerPiece {
+    width:80%;
+    height:80%;
+    
+    margin: auto 0px;
+    justify-content: center;
+
+    border-radius:50%;
+    box-shadow: 4px 4px 4px black;
+
+}
+
+.CheckerPiece-w{
+    background-color: ghostwhite;
+    border:3px outset lightgray
+}
+.CheckerPiece-b{
+    background-color: maroon;
+    border:3px outset #482029
+
+}

@@ -1,0 +1,22 @@
+body{
+    margin:0;
+}
+
+section{
+    padding: 10vw, 15px;
+}
+
+#gameBoardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.hole{
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    border-radius: 50%; /*Make into circle*/
+    margin:10px;
+    cursor: pointer;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <!--HEAD INFO-->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Whack-A-Mole</title> <!--Title of the site-->
+
+        <!--Link the stylesheet to the document-->
+        <link rel="stylesheet" type="text/css" href="../Style/styles.css">
+        <!--Attatch javascript to the document-->
+        <script src="../Script/whack.js"></script>
+    </head>
+    
+    <!--BODY CONTENT-->
+    <body>
+        <!--Hero Section-->
+        <header i="heroSect">
+            <h1>Whack-A-Mole</h1>
+        </header>
+        <!--Main Content-->
+        <main>
+            <div id="gameBoardContainer"></div>
+                    <!--Implementing the Script functions needed to run website-->
+        <script>
+            //Generate Board
+            CreateHoles(6);
+            StartGame();
+        </script>
+        </main>
+    </body>
+</html>

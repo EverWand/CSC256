@@ -1,15 +1,47 @@
 body{
     margin:0;
+    background-color: sienna;
 }
 
-section{
-    padding: 10vw, 15px;
+header{
+    font-size: 4rem;
+    color:ghostwhite;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5vw;
+    width: fit-content;   
+}
+
+#GameInfoSect{
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    background-color: ghostwhite;
+    border: 3px solid black;
+    border-radius: 15px;
+    width: fit-content;
+    height: fit-content;
+    padding:50px;
+    align-content: center;
 }
 
 #gameBoardContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 25px;
+    border: 5px solid black;
+    border-radius: 25px;
+    max-width: 1000px;
+}
+#ScoreContainer{
+    display: flex;
+    flex-direction: row;
 }
 
 .hole{
@@ -19,4 +51,19 @@ section{
     border-radius: 50%; /*Make into circle*/
     margin:10px;
     cursor: pointer;
+}
+.hole:hover{
+    box-shadow: inset 1em 2px 1em rgba(0, 0, 0, 0.3);
+
+}
+.poppedUp{
+    background-color: green;
+    box-shadow: outset 0 4px 4px rgba(68, 255, 108, .6);
+}
+
+.center{
+    margin:0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }

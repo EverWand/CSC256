@@ -16,18 +16,31 @@
     <!--BODY CONTENT-->
     <body>
         <!--Hero Section-->
-        <header i="heroSect">
+        <header id="heroSect" class="center">
             <h1>Whack-A-Mole</h1>
         </header>
         <!--Main Content-->
-        <main>
-            <div id="gameBoardContainer"></div>
-                    <!--Implementing the Script functions needed to run website-->
-        <script>
-            //Generate Board
-            CreateHoles(6);
-            StartGame();
-        </script>
+        <main class="center">
+            <section id="GameInfoSect">
+                <div id="TimerContainer">
+                    <label>Time Left: <label>
+                    <h1 id="Timer"></h1>
+                </div>
+                <hr>
+                <div id="ScoreContainer">
+                    <label>Score: <label>
+                    <h1 id="Score_Points"></h1>
+                </div>
+                
+            </section>
+            <section id="gameBoardContainer" ></section>
+            <!--Implementing the Script functions needed to run website-->
+            <script>
+                //Generate Board
+                CreateHoles(10);
+                //Start the Game
+                StartGame();
+            </script>
         </main>
     </body>
 </html>

@@ -18,6 +18,12 @@ main{
 
 #GameInfoSect{
     display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#GameInfo{
+    display: flex;
     flex-direction: row;
     column-gap: 50px;
     background-color: ghostwhite;
@@ -38,12 +44,14 @@ main{
     border: 5px solid black;
     border-radius: 25px;
     max-width: 1000px;
+    margin: 0px 5vw;
 }
 #ScoreContainer{
     display: flex;
     flex-direction: row;
 }
 
+/*HOLE STYLES*/
 .hole{
     width: 100px;
     height: 100px;
@@ -61,9 +69,20 @@ main{
     box-shadow: outset 0 4px 4px rgba(68, 255, 108, .6);
 }
 
+/*General Class Attributes*/
 .center{
     margin:0 auto;
     text-align: center;
     align-items: center;
     justify-content: center;
+}
+
+/*---BUTTONS*/
+/*------Primary*/
+.btn_primary{
+    background-color: cornflowerblue;
+    color: ghostwhite;
+    border-radius: 8px;
+    padding:15px 30px;
+    width: fit-content;
 }

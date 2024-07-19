@@ -22,24 +22,25 @@
         <!--Main Content-->
         <main class="center">
             <section id="GameInfoSect">
-                <div id="TimerContainer">
-                    <label>Time Left: <label>
-                    <h1 id="Timer"></h1>
-                </div>
-                <hr>
-                <div id="ScoreContainer">
-                    <label>Score: <label>
-                    <h1 id="Score_Points"></h1>
-                </div>
-                
+                <span id="GameInfo">
+                    <div id="TimerContainer">
+                        <label>Time Left: <label>
+                        <h1 id="Timer"></h1>
+                    </div>
+                    <hr>
+                    <div id="ScoreContainer">
+                        <label>Score: <label>
+                        <h1 id="Score_Points"></h1>
+                    </div>
+                </span>
+                <button class="btn_primary center" onclick="StartGame()"> Start Game! </button>
             </section>
             <section id="gameBoardContainer" ></section>
+            <section id="EventTestSec"></section>
             <!--Implementing the Script functions needed to run website-->
             <script>
                 //Generate Board
                 CreateHoles(10);
-                //Start the Game
-                StartGame();
             </script>
         </main>
     </body>

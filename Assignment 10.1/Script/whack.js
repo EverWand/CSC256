@@ -6,7 +6,7 @@ var lasthole = 0;
 var currPoints = 0;
 const WACK_VALUE = 25; 
 //---Timer
-var gameTimerSeconds = 10;
+var gameTimerSeconds = 120;
 var timeInterval;
 
 //GAME FUNCTIONS
@@ -25,25 +25,30 @@ function CreateHoles(amountOfHoles){
     
     holeArr = document.querySelectorAll(".hole");
 }
+//Starts the Game
 function StartGame() {
-    
-    //set the time that the game needs to once the game starts
+    //GAME INITIALIZATION
+    //---Init Score:
+    currPoints = 0;         //reset the points
+    UpdateScoreDisplay();   //Update Score Display
+    //---Start the Timer:
     var endTime = Date.now() + gameTimerSeconds * 1000;
 
         //Start a Timer interval function
         timerInterval = setInterval(function()
-        {
-            UpdateTimerDisplay(endTime);
-    
+        {  
+            //update the time
+            UpdateTimerDisplay(endTime);    //update the time
+            //if the timer is reaches the end time
             if(Math.round((endTime - Date.now())/1000) <= 0){
-                clearInterval(timerInterval)
+                clearInterval(timerInterval); //Clear the timer interval
             }
     
         }, 1000);
 
     //Inline Function for recursively looping the game loop.
     function gameLoop() {
-        //is the game still going?
+        //Is Game is Still Going
         if (Date.now() < endTime) {
             //After a random amount of time:
             setTimeout(function() {
@@ -62,7 +67,6 @@ function StartGame() {
         }
     }
     gameLoop(); // Start the game loop
-
 }
 
 //HOLE FUNCTIONS
@@ -120,7 +124,21 @@ function RandomTime(min, max)
     // 0%-100% of the cumulative value of Min and Max values wanted
     return Math.round(Math.random() * (max-min) + min);
 }
+function GetRandomColorHex()
+{
+    //Variables
+    var letters = '0123456789ABCDEF';   //list of characters used in hexcodes
+    var hex = "#";  //saves the hex code
+    
+    //Create a complete
+    for(var i = 0; i < 6 ; i ++)
+    {
+        //Add a random character to the hex code
+        hex += letters[Math.floor(Math.random() * 16)];
+    }
 
+    return hex;
+}
 //EVENTS:
 //Whack a Hole
 function handle_WhackHole(event)
@@ -136,6 +154,12 @@ function handle_WhackHole(event)
         //SCORE POINTS!
         currPoints += WACK_VALUE;   //increase the current points
         UpdateScoreDisplay();       //Update the score display
-
     }
+}
+
+function handle_eventBoxHovered(event)
+{
+    let box = event.target
+
+    box.style.backgroundColor = GetRandomColor();
 }

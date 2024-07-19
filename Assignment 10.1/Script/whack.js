@@ -159,7 +159,7 @@ function handle_WhackHole(event)
 
 function handle_eventBoxHovered(event)
 {
-    let box = event.target
+    let box = event.target  //get the target
 
-    box.style.backgroundColor = GetRandomColor();
+    box.style.backgroundColor = GetRandomColorHex(); //Randomize the background color of the target
 }

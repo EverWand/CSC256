@@ -51,6 +51,13 @@ main{
     flex-direction: row;
 }
 
+
+#EventTestSec
+{
+    min-height:400px;
+    min-width: 400px;
+    background-color: beige;
+}
 /*HOLE STYLES*/
 .hole{
     width: 100px;

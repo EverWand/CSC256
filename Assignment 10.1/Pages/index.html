@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Make this an html document-->
 
 <html lang="en">
     <!--HEAD INFO-->
@@ -21,22 +21,29 @@
         </header>
         <!--Main Content-->
         <main class="center">
+            <!--Section for the game information-->
             <section id="GameInfoSect">
+                <!--The game info container-->
                 <span id="GameInfo">
+                    <!--Timer Display-->
                     <div id="TimerContainer">
                         <label>Time Left: <label>
-                        <h1 id="Timer"></h1>
+                        <h1 id="Timer"></h1>    <!--Where the time will be updated-->
                     </div>
-                    <hr>
+                    <hr>    <!--Draw a line-->
+                    <!--Score Display-->
                     <div id="ScoreContainer">
                         <label>Score: <label>
-                        <h1 id="Score_Points"></h1>
+                        <h1 id="Score_Points"></h1> <!--Where the score will be updated-->
                     </div>
                 </span>
+                <!--Start Button-->
                 <button class="btn_primary center" onclick="StartGame()"> Start Game! </button>
             </section>
+            <!--container to draw the board-->
             <section id="gameBoardContainer" ></section>
-            <section id="EventTestSec" onmouseenter="handle_eventBoxHovered(event)"></section>
+            <!--Container used for event testing-->
+            <section id="EventTestSec" onmouseleave="handle_eventBoxExit(event)" onmouseenter="handle_eventBoxHovered(event)"></section>
             <!--Implementing the Script functions needed to run website-->
             <script>
                 //Generate Board

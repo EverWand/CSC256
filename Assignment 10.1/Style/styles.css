@@ -1,95 +1,102 @@
+/*The entire body*/
 body{
-    margin:0;
-    background-color: sienna;
+    margin: 0;                    /*Gets rid of the margin*/
+    background-color: sienna;   /*set the color of the container background*/
 }
 
+/*Header container*/
 header{
-    font-size: 4rem;
-    color:ghostwhite;
+    font-size: 4rem;       /*Adjusts the size of the text within this container*/
+    color:ghostwhite;   /* Changes the color of the text within the container*/   
 }
 
+/*The main container*/
 main{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 5vw;
-    width: fit-content;   
+    display: flex;                  /*Make the container a flexbox*/
+    flex-wrap: wrap;                /*have the elements within the flexbox wrap*/
+    justify-content: space-between; /*add space in between the elements where it fits inside the container*/
+    gap: 5vw;                       /*adjusts the gap-size of the flex items*/
+    width: fit-content;             /*Make the container's width fit to its content*/
 }
 
+/*The section holding the game's information*/
 #GameInfoSect{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: flex;          /*Make the container a flexbox*/
+    flex-direction: column; /*align the flex items in a column*/
+    gap: 10px;              /*adjusts the gap-size of the flex items*/
 }
 
+/*Game info container*/
 #GameInfo{
-    display: flex;
-    flex-direction: row;
-    column-gap: 50px;
-    background-color: ghostwhite;
-    border: 3px solid black;
-    border-radius: 15px;
-    width: fit-content;
-    height: fit-content;
-    padding:50px;
+    display: flex;                    /*Make the container a flexbox*/
+    flex-direction: row;              /*align the flex items in a row*/
+    column-gap: 50px;                 /*adjusts the gap-size of the flex items*/
+    background-color: ghostwhite;   /*set the color of the container background*/
+    border: 3px solid black;        /*Makes a border around the container*/
+    border-radius: 15px;              /*rounds the edges of the container border*/
+    width: fit-content;               /*Make the container's width fit to its content*/
+    height: fit-content;              /*Make the container's height fit to its content*/
+    padding:50px;                    /*Adds padding*/
     align-content: center;
 }
-
+/*container for the Game Board*/
 #gameBoardContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: rgba(0, 0, 0, .5);
-    padding: 25px;
-    border: 5px solid black;
-    border-radius: 25px;
-    max-width: 1000px;
+    display: flex;                            /*Make the container a flexbox*/
+    flex-wrap: wrap;                          /*have the elements within the flexbox wrap*/
+    justify-content: space-around;            /*add space around the elements where it fits inside the container*/
+    background-color: rgba(0, 0, 0, .5);    /*set the color of the container background, with alpha value*/
+    padding: 25px;                            /*Adds padding*/
+    border: 5px solid black;                /*rounds the edges of the container*/
+    border-radius: 25px;                      /*rounds the edges of the container border*/
+    max-width: 1000px;                        /*set the maximum width of the container*/
     margin: 0px 5vw;
 }
+/*Container showing the score*/
 #ScoreContainer{
-    display: flex;
-    flex-direction: row;
+    display: flex;          /*Make the container a flexbox*/
+    flex-direction: row;    /*make the flexbox direction into rows*/
 }
-
-
+/*The section to test event handling*/
 #EventTestSec
 {
-    min-height:400px;
-    min-width: 400px;
-    background-color: beige;
+    min-height:400px;               /*Make the container's minimum height fit to its content*/
+    min-width: 400px;              /*Make the container's minimum width fit to its content*/
+    background-color: beige;    /*set the color of the container background*/
 }
 /*HOLE STYLES*/
 .hole{
-    width: 100px;
-    height: 100px;
-    background-color: brown;
-    border-radius: 50%; /*Make into circle*/
-    margin:10px;
-    cursor: pointer;
+    width: 100px;                  /*set the width of the container*/
+    height: 100px;                 /*set the height of the container*/
+    background-color: brown;    /*set the color of the container background*/
+    border-radius: 50%;           /*Make into circle*/
+    margin:10px;                  /*Adjust the margin of the container*/
+    cursor: pointer;              /*change the cursor diplay*/
 }
+/*When the hole is being hovered*/
 .hole:hover{
-    box-shadow: inset 1em 2px 1em rgba(0, 0, 0, 0.3);
-
+    box-shadow: inset 1em 2px 1em rgba(0, 0, 0, 0.3);       /*Gives a shadow to the container*/
 }
+/*Class used to pop up holes*/
 .poppedUp{
-    background-color: green;
-    box-shadow: outset 0 4px 4px rgba(68, 255, 108, .6);
+    background-color: green;                                /*set the color of the container background*/
+    box-shadow: outset 0 4px 4px rgba(68, 255, 108, .6);    /*Gives a shadow to the container*/
 }
 
 /*General Class Attributes*/
+/*--- class centering the element/container*/
 .center{
-    margin:0 auto;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    margin:0 auto;              /*centeres the container in parent container*/
+    text-align: center;         /*aligns the text to the center of the containers*/
+    align-items: center;        /*align items to center of the container, crossway*/
+    justify-content: center;    /*aligns the content to the center, in-line*/
 }
 
 /*---BUTTONS*/
 /*------Primary*/
 .btn_primary{
-    background-color: cornflowerblue;
-    color: ghostwhite;
-    border-radius: 8px;
-    padding:15px 30px;
-    width: fit-content;
+    background-color: cornflowerblue;   /*set the color of the container background*/
+    color: ghostwhite;                  /*Changes the color of the text within the container*/   
+    border-radius: 8px;                   /*rounds the edges of the container border*/
+    padding:15px 30px;                    /*Adds padding*/
+    width: fit-content;                   /*Make the container's width fit to its content*/
 }

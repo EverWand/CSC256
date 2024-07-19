@@ -1,29 +1,32 @@
 //VARIABLES:
 //---Holes
-var holeArr = [];
-var lasthole = 0;
+var holeArr = [];   //Saves a list of holes
+var lasthole = 0;   //tracks what the last hole popped up is
 //---Points
-var currPoints = 0;
-const WACK_VALUE = 25; 
+var currPoints = 0;     //the user's points
+const WACK_VALUE = 25;  //The points gained after clicking a popped up hole
 //---Timer
-var gameTimerSeconds = 120;
-var timeInterval;
+var gameTimerSeconds = 120; //Game's timer
+var timeInterval;           //to track the timer countdown interval
 
 //GAME FUNCTIONS
+//---creates the holes on the board
 function CreateHoles(amountOfHoles){
-    var parent = document.getElementById("gameBoardContainer");
 
+    var parent = document.getElementById("gameBoardContainer"); //get the element for the game board
+
+    //loop to create each hole needed
     for(var i= 0; i < amountOfHoles; i++)
     {
-        var hole = document.createElement("div");
-        hole.setAttribute("id", "Hole " + i);
-        hole.classList.add("hole");
+        var hole = document.createElement("div");   //Create a new contianer
+        hole.setAttribute("id", "Hole " + i);       //Give it a new ID based on the number of hole it is
+        hole.classList.add("hole");                 //Make this a hole by giving it the hole class
 
-        hole.addEventListener("click", handle_WhackHole);
-        parent.appendChild(hole);   
+        hole.addEventListener("click", handle_WhackHole);   //make holes have an event for when it gets whacked
+        parent.appendChild(hole);                           //append the element to the game board
     }
     
-    holeArr = document.querySelectorAll(".hole");
+    holeArr = document.querySelectorAll(".hole");   //Save all holes created to the hole array
 }
 //Starts the Game
 function StartGame() {
@@ -91,30 +94,32 @@ function GetRandomHole(holes)
     var counter = Math.floor(Math.random()*holes.length);
     var hole = holes[counter];  //get he hole based on the index
 
+    //if the random whole selected is the same as the last hole chosen
     if(counter == lasthole)
     {
-        return GetRandomHole(holes);
+        return GetRandomHole(holes); //go find another random hole
     }
-    lasthole = counter;
+    //after a hole is found:
+    lasthole = counter;     //make the hole found the new last hole popped up
 
-    console.log("Hole shown: " + counter);
-    return hole;
+    //console.log("Hole shown: " + counter); [DEBUG]
+    return hole;    //Return the found hole
 }
 
 //UI FUNCTIONS
 //---Updates the Points Display
 function UpdateScoreDisplay()
 {
-    var PointUI = document.getElementById("Score_Points");
+    var PointUI = document.getElementById("Score_Points");  //get the element for the score display
 
-    PointUI.textContent = currPoints;
+    PointUI.textContent = currPoints;                       //display the current score
 }
 //Updates teh display with the current seconds left in the game
 function UpdateTimerDisplay(TimerEnd){
     timeDisplay = document.getElementById("Timer");  //Get the element for the display
 
-    timeRemaining = TimerEnd - Date.now();
-    timeDisplay.textContent = Math.round(timeRemaining/1000);             //Put the current time left into the display container
+    timeRemaining = TimerEnd - Date.now();                      //Get the time remaining
+    timeDisplay.textContent = Math.round(timeRemaining/1000);   //Put the current remaining left into the display container as seconds
 }
 
 //GENERAL FUNCTIONS
@@ -124,6 +129,8 @@ function RandomTime(min, max)
     // 0%-100% of the cumulative value of Min and Max values wanted
     return Math.round(Math.random() * (max-min) + min);
 }
+
+//Get a random Hex code for a color
 function GetRandomColorHex()
 {
     //Variables
@@ -137,7 +144,7 @@ function GetRandomColorHex()
         hex += letters[Math.floor(Math.random() * 16)];
     }
 
-    return hex;
+    return hex; //return the constructed hex code
 }
 //EVENTS:
 //Whack a Hole
@@ -157,9 +164,18 @@ function handle_WhackHole(event)
     }
 }
 
+//handles the event when the event box is being hovered over
 function handle_eventBoxHovered(event)
 {
     let box = event.target  //get the target
 
     box.style.backgroundColor = GetRandomColorHex(); //Randomize the background color of the target
+}
+
+//When the mouse leaves the Event Box
+function handle_eventBoxExit(event)
+{
+    //Alert the user:
+    alert("Oh wow, look at that!");
+    alert("You changed the color, thats pretty neat");
 }

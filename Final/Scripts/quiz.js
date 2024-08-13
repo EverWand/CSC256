@@ -19,26 +19,27 @@ var quizType = QUIZTYPES.Syntax; //tracks the current quiz Type [Default is Synt
 
 class QuizCard{
     constructor(quizID, correctAnswerID, numOfQuestions, quizType){
-        var id = quizID;
-        var a_id = correctAnswerID;
-        var q_amount = numOfQuestions;
-        var type = quizType;
+        this.id = quizID;
+        this.a_id = correctAnswerID;
+        this.q_amount = numOfQuestions;
+        this.type = quizType;
+        console.log("NEW QUIZ CARD CONSTRUCTED!");
     }
 
     DisplayQuizCard() {
         var currentQuestionList; //used to save the question list this scope uses
 
         //Get What List of questions we are using
-        switch (quizType){
+        switch (this.quizType){
             //SYNTAX
             case QUIZTYPES.Syntax.name:
-                quizType = QUIZTYPES.Syntax;
-                currentQuestionList = syntaxQuestionList;
+                this.quizType = QUIZTYPES.Syntax;
+                this.currentQuestionList = QuestionList_SYNTAX;
                 break;
             //PRINCIPLE
             case QUIZTYPES.Principle.name:
-                quizType = QUIZTYPES.Principle;
-                currentQuestionList = PrincipleQuestionList;
+                this.quizType = QUIZTYPES.Principle;
+                this.currentQuestionList = QuestionList_PRINCIPLE;
                 break;
         }
         
@@ -47,12 +48,13 @@ class QuizCard{
 
         //Display Example Image
         
-        CreateAnswerBtns(q_amount, GetRandomInt(q_amount-1)); //Display Answers
+        CreateAnswerBtns(this.q_amount, GetRandomInt(this.q_amount-1)); //Display Answers
     }
 }
 
 //Function whenever a new Round Starts
 function StartRound(quizType_str){
+    console.log("Starting Quiz Game");
     var currentQuestionList; //used to save the question list this scope uses
 
     //Setting Quiz Type
@@ -60,19 +62,20 @@ function StartRound(quizType_str){
         //SYNTAX
         case QUIZTYPES.Syntax.name:
             quizType = QUIZTYPES.Syntax;
-            currentQuestionList = syntaxQuestionList;
+            currentQuestionList = QuestionList_SYNTAX;
             break;
         //PRINCIPLE
         case QUIZTYPES.Principle.name:
             quizType = QUIZTYPES.Principle;
-            currentQuestionList = PrincipleQuestionList;
+            currentQuestionList = QuestionList_PRINCIPLE;
             break;
     }
 
     //GAMEPLAY LOOP! {Recursive Loop, when correct answer is submitted }
     if(currRound <= MAX_ROUNDS){
+        console.log(`Starting Round ${currRound} of ${MAX_ROUNDS}`);
         //Clean any previous card info
-        var card = new QuizCard(currRound, GetRandomInt(3), quizType); //Make a new Quiz Card for the round
+        var card = new QuizCard(currRound, GetRandomInt(3), 4, quizType); //Make a new Quiz Card for the round
         
         card.DisplayQuizCard();
     }
@@ -92,45 +95,74 @@ function IncrementRound(){
     }
 }
 
-//Do  Create different Buttons in the Answer Choice Sections
-function CreateAnswerBtns(amount, answerID)
+//Create different Buttons in the Answer Choice Sections
+function CreateAnswerBtns(amount, correctAnswerID)
 {
-    var currentAnswerList;  //Tracks the amount of Answers have been used already generated
+    console.log(`Creating answer buttons. Correct button being: ${correctAnswerID}`)
+    var currentAnswerList = [];  //Tracks the amount of Answers have been used already generated
 
     //Decide what answer pool we are using based on the Quiz Type
     switch (quizType){
         //Syntax
         case QUIZTYPES.Syntax:
-            currentAnswerList = syntaxAnswerList;
+            currentAnswerList = AnswerList_SYNTAX;
             break;
         //Principles
         case QUIZTYPES.Principle:
-            currentAnswerList = PrincipleAnswerList;
+            currentAnswerList = AnswerList_PRINCIPLE;
             break;
     }
 
-    //Where the Answers will be generated
+    //Data for the Correct Answer
+    var CorrectAnswerPos = GetRandomInt(amount-1)       // Button Position
+    console.log(`Corret Answer Located at Position ${CorrectAnswerPos}`);
+
+    //Empty Array meant to track what Answer IDs have been used already
+    var usedIDs = [];
+
+    //reference for the Container that will hold all of the answer buttons
     var a_box = document.getElementById("AnswerBtnsContainer"); 
 
-    ran_AnsPos = random //random position for the answer to spawn in
-
     //add elements to the answerBox for each answer needing displayed
-    for (i = 0; i < amount ; i++){
+    for (i = 0; i <= amount-1 ; i++){
+        //Create A New Button to hold the generated data
         var a_btn = document.createElement("button");
         var a_btn_txt = document.createElement("p");
+        //For Setting the specific ID that will be used to print data
+        var printID = GetRandomInt(currentAnswerList.length);
 
-        var randomID = GetRandomInt(currentAnswerList.length)
-        //Write the random answer in the button
-        a_btn_txt.innerText = currentAnswerList[randomID]
-        //Remove that random answer from the list of answers that can be printed
-        currentAnswerList.splice(randomID, 1);
+        //Set the printing ID to the id with the correct answer;
+        if(i == CorrectAnswerPos) { printID = correctAnswerID; }
+        else{
+            //get a random unused Answer ID
+            GetUniqueID();
+
+            //Nested Function used only used to verify if the printing ID has not already been used
+            function GetUniqueID(){
+                //set a random ID for printing later
+                printID = GetRandomInt(currentAnswerList.length);
+
+                //check to see if the printing ID is an ID within the used IDs list or happens to land on the correct answer's ID
+                if (usedIDs.includes(printID) || printID == correctAnswerID){
+                    GetUniqueID();  //Recursively loop until a Unique ID is found
+                }
+            }
+        }
+
+        //Save the found Print ID to the used IDs list
+        usedIDs.push(printID);
+
+        //print an answer in the button
+        a_btn_txt.innerText = currentAnswerList[printID];
         
+        //append the created button with the data obtained
         a_box.appendChild(a_btn);
         a_btn.appendChild(a_btn_txt);
     }
+}
 
-    function GetRandomInt(max_range){
-        ranInt = Math.floor((Math.random()*max_range));
+//Getting a random intenger within a range
+function GetRandomInt(max_range){
+        let ranInt = Math.floor((Math.random()*max_range));
         return ranInt;
-    }
 }

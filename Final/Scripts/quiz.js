@@ -1,3 +1,4 @@
+//Amount of round in the quiz
 const MAX_ROUNDS = 3;
 var currRound = 1;
 
@@ -6,8 +7,10 @@ const QUIZTYPES = {
     Syntax: {id: 0 , name:"Syntax"},
     Principle: {id: 1, name: "Principle"}
 }
-var quizType = QUIZTYPES.Syntax; //tracks the current quiz Type [Default is Syntax]
+//tracks the current quiz Type [Default is Syntax]
+var quizType = QUIZTYPES.Syntax;
 
+//Data used to structure questions
 class QuestionData{
     constructor(q_Prompt, q_Example){
         this.prompt = q_Prompt;
@@ -15,12 +18,12 @@ class QuestionData{
     }
 
     DisplayQuestionData(){
-        console.log(`Displaying Question Data for Quiz Page ${id}`);
+        console.log(`Displaying Question Data for Quiz Page`);
 
         //Get the Container of the prompt area.
-        promptCont = document.getElementById("QuestionPrompt");
+        let promptCont = document.getElementById("QuestionPrompt");
         //get container of the example area.
-        exampleCont = document.getElementById("QuestionExample");
+        let exampleCont = document.getElementById("QuestionExample");
         //create ether a text example or an image
         var exampleBox;
         let examplePrint = "";
@@ -36,27 +39,29 @@ class QuestionData{
 
             //create a header element and set the text
             exampleBox = document.createElement("h2");
-            exampleBox.innerText(examplePrint);
+            exampleBox.innerText = examplePrint;
         }
+
+        //Append data into the content containers in HTML
+        promptCont.innerText = this.prompt;
+        exampleCont.appendChild(exampleBox);
     }
 }
 
-
+//Syntax Questions
 let syn_Q1 = new QuestionData("S_Q1", "S_QE1");
 let syn_Q2 = new QuestionData("S_Q2", "S_QE2");
 let syn_Q3 = new QuestionData("S_Q3", "S_QE3");
 let syn_Q4 = new QuestionData("S_Q4", "S_QE4");
-
+//Principle Questions
 let pri_Q1 = new QuestionData("P_Q1", "P_QE1");
 let pri_Q2 = new QuestionData("P_Q2", "P_QE2");
 let pri_Q3 = new QuestionData("P_Q3", "P_QE3");
 let pri_Q4 = new QuestionData("P_Q4", "P_QE4");
 
-
 // Q&A for Syntax Quiz
 const QuestionList_SYNTAX = [syn_Q1, syn_Q2, syn_Q3, syn_Q4];
 const AnswerList_SYNTAX = ["S_A1", "S_A2", "S_A3", "S_A4", "S_A5", "S_A6"];
-
 //Q&A for Principle Quiz
 const QuestionList_PRINCIPLE = [pri_Q1, pri_Q2, pri_Q3, pri_Q4,];
 const AnswerList_PRINCIPLE = ["P_A1", "P_A2", "P_A3", "P_A4", "P_A5", "P_A6"];
@@ -128,7 +133,6 @@ function StartRound(quizType_str){
         card.DisplayQuizCard();
     }
 }
-
 //Adds what round the user is on
 function IncrementRound(){
     currRound++;
@@ -142,7 +146,6 @@ function IncrementRound(){
         currRound = MAX_ROUNDS;
     }
 }
-
 //Create different Buttons in the Answer Choice Sections
 function CreateAnswerBtns(amount, correctAnswerID)
 {
@@ -208,7 +211,6 @@ function CreateAnswerBtns(amount, correctAnswerID)
         a_btn.appendChild(a_btn_txt);
     }
 }
-
 //Getting a random intenger within a range
 function GetRandomInt(max_range){
     let ranInt = Math.floor((Math.random()*max_range));

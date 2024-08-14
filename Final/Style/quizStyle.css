@@ -1,0 +1,15 @@
+
+button{
+    width: 80px;
+    height: 30px;
+}
+
+#AnswerBtnsContainer{
+    display: flex; 
+    flex-direction: row;
+}
+
+.center{
+    justify-content: center;
+    text-align: center;
+}

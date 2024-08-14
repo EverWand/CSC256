@@ -1,20 +1,65 @@
 const MAX_ROUNDS = 3;
 var currRound = 1;
 
-// Q&A for Syntax Quiz
-const QuestionList_SYNTAX = ["S_Q1", "S_Q2","S_Q3", "S_Q4",];
-const AnswerList_SYNTAX = ["S_A1", "S_A2", "S_A3", "S_A4", "S_A5", "S_A6"];
-
-//Q&A for Principle Quiz
-const QuestionList_PRINCIPLE = ["P_Q1", "P_Q2","P_Q3", "P_Q4",];
-const AnswerList_PRINCIPLE = ["P_A1", "P_A2", "P_A3", "P_A4", "P_A5", "P_A6"];
-
 //Different Types of Quizes
 const QUIZTYPES = {
     Syntax: {id: 0 , name:"Syntax"},
     Principle: {id: 1, name: "Principle"}
 }
 var quizType = QUIZTYPES.Syntax; //tracks the current quiz Type [Default is Syntax]
+
+class QuestionData{
+    constructor(q_Prompt, q_Example){
+        this.prompt = q_Prompt;
+        this.example = q_Example;
+    }
+
+    DisplayQuestionData(){
+        console.log(`Displaying Question Data for Quiz Page ${id}`);
+
+        //Get the Container of the prompt area.
+        promptCont = document.getElementById("QuestionPrompt");
+        //get container of the example area.
+        exampleCont = document.getElementById("QuestionExample");
+        //create ether a text example or an image
+        var exampleBox;
+        let examplePrint = "";
+        examplePrint = this.example;
+
+        //Is the Example an image?
+        if(examplePrint.includes(".png")){
+            //Create an image and set source
+            exampleBox = document.createElement("img");
+            exampleBox.src = examplePrint;
+        }
+        else{
+
+            //create a header element and set the text
+            exampleBox = document.createElement("h2");
+            exampleBox.innerText(examplePrint);
+        }
+    }
+}
+
+
+let syn_Q1 = new QuestionData("S_Q1", "S_QE1");
+let syn_Q2 = new QuestionData("S_Q2", "S_QE2");
+let syn_Q3 = new QuestionData("S_Q3", "S_QE3");
+let syn_Q4 = new QuestionData("S_Q4", "S_QE4");
+
+let pri_Q1 = new QuestionData("P_Q1", "P_QE1");
+let pri_Q2 = new QuestionData("P_Q2", "P_QE2");
+let pri_Q3 = new QuestionData("P_Q3", "P_QE3");
+let pri_Q4 = new QuestionData("P_Q4", "P_QE4");
+
+
+// Q&A for Syntax Quiz
+const QuestionList_SYNTAX = [syn_Q1, syn_Q2, syn_Q3, syn_Q4];
+const AnswerList_SYNTAX = ["S_A1", "S_A2", "S_A3", "S_A4", "S_A5", "S_A6"];
+
+//Q&A for Principle Quiz
+const QuestionList_PRINCIPLE = [pri_Q1, pri_Q2, pri_Q3, pri_Q4,];
+const AnswerList_PRINCIPLE = ["P_A1", "P_A2", "P_A3", "P_A4", "P_A5", "P_A6"];
 
 
 class QuizCard{
@@ -44,11 +89,14 @@ class QuizCard{
         }
         
         //DISPLAY QUIZ INFO
-        
-
+        this.UpdateQuizInfo();
         //Display Example Image
-        
         CreateAnswerBtns(this.q_amount, GetRandomInt(this.q_amount-1)); //Display Answers
+    }
+
+    UpdateQuizInfo() {
+        let questionSet = QuestionList_SYNTAX[this.id];
+        questionSet.DisplayQuestionData();
     }
 }
 
@@ -75,7 +123,7 @@ function StartRound(quizType_str){
     if(currRound <= MAX_ROUNDS){
         console.log(`Starting Round ${currRound} of ${MAX_ROUNDS}`);
         //Clean any previous card info
-        var card = new QuizCard(currRound, GetRandomInt(3), 4, quizType); //Make a new Quiz Card for the round
+        var card = new QuizCard(currRound-1, GetRandomInt(3), 4, quizType); //Make a new Quiz Card for the round
         
         card.DisplayQuizCard();
     }
@@ -163,6 +211,6 @@ function CreateAnswerBtns(amount, correctAnswerID)
 
 //Getting a random intenger within a range
 function GetRandomInt(max_range){
-        let ranInt = Math.floor((Math.random()*max_range));
-        return ranInt;
+    let ranInt = Math.floor((Math.random()*max_range));
+    return ranInt;
 }

@@ -8,8 +8,12 @@ button{
     display: flex; 
     flex-direction: row;
 }
+#AnswerBtnsContainer > button{
+    border: 3px, solid, blue;
+}
 
 .center{
     justify-content: center;
     text-align: center;
+    margin: auto 0;
 }

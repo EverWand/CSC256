@@ -108,7 +108,9 @@ class QuizCard{
 //Function whenever a new Round Starts
 function StartRound(quizType_str){
     console.log("Starting Quiz Game");
+
     var currentQuestionList; //used to save the question list this scope uses
+
 
     //Setting Quiz Type
     switch (quizType_str){
@@ -124,6 +126,9 @@ function StartRound(quizType_str){
             break;
     }
 
+    //Fill in Header Info
+    FillHeader();
+
     //GAMEPLAY LOOP! {Recursive Loop, when correct answer is submitted }
     if(currRound <= MAX_ROUNDS){
         console.log(`Starting Round ${currRound} of ${MAX_ROUNDS}`);
@@ -132,6 +137,25 @@ function StartRound(quizType_str){
         
         card.DisplayQuizCard();
     }
+}
+
+function FillHeader(){
+    //Diplay the Correct Quiz Label
+    let QuizLabel = document.getElementById("QuizLabel");
+    QuizLabel.innerText = quizType.name;
+    //update displays to the current round information
+    updateRoundInfo();
+}
+
+function updateRoundInfo(){
+    //====Update Round info====
+    //current round display
+    let currDisplay = document.getElementById("CurrRoundDisplay");
+    currDisplay.innerText = currRound;
+    //max rounds display
+    let maxDiplay = document.getElementById("MaxRoundDisplay");
+    maxDiplay.innerText = MAX_ROUNDS;
+
 }
 //Adds what round the user is on
 function IncrementRound(){

@@ -3,6 +3,9 @@ body{
     margin:0;
 }
 
+header{
+    background-color: lightgrey;
+}
 /*====| HERO |====*/
 header > #Content > h1{
     font-size: 7rem;
@@ -40,7 +43,7 @@ nav > ul > a > li :hover{
 
 
 #Content{
-    margin: 4rem 10%;
+    padding: 4rem 10%;
 }
 
 

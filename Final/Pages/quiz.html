@@ -3,44 +3,45 @@
 <html>
     <head>
         <title>CSC256 | Final</title>
+        <link rel="stylesheet" type="text/css" href="../Style/styles.css">
+        <link rel="stylesheet" type="text/css" href="../Style/quizStyle.css">
         <script src="../Scripts/quiz.js"></script>
     </head>
     <body>
         <!--NAVIGATION BAR-->
         <nav>
             <ul>
-                <li>
+                <a href="../Pages/index.html"><li>
                     Home
-                </li>
-                <li>
+                </li></a>
+              <a href="../Pages/languageSelect.html"><li>
                     Languages
-                </li>
+                </li></a>
             </ul>
         </nav>
         <!--HERO SECTION-->
         <header>
-            <h1>Mini-Hero</h1>
+            <div id="Content">
+                <h1>Mini-Hero</h1>
+            </div>
         </header>
         <section>
-            <span id="content" class="center">
-                    <div>
-                        <!--Task/Question-->
-                        <p id="QuestionPrompt"></p>
-                        <div id = "QuestionExample"></div>
-                        <!--Place to put Answer-->
-                        <div id="AnswerBox"></div>
-                        <!--Options-->
-                        <div id="AnswerBtnsContainer"></div>
-                    </div>
-            
-            </span>
+            <div id="Content" class="center">
+                <!--Task/Question-->
+                <p id="QuestionPrompt"></p>
+                <div id = "QuestionExample"></div>
+                <!--Place to put Answer-->
+               <div id="AnswerBox"></div>
+                <!--Options-->
+                <div id="AnswerBtnsContainer"></div>
+            </div>
         </section>
         <script>
             StartRound("Syntax");
         </script>
         <!--FOOTER-->
         <footer>
-            <div id= "Footer_content">
+            <div id= "Content">
                 <p>Page By: Lucas Foxworthy</p>
                 <hr>
                 <p>Last Updated: 8/7/2024</p>

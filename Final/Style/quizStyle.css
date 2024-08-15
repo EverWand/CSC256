@@ -1,19 +1,10 @@
 
-button{
-    width: 80px;
-    height: 30px;
-}
-
 #AnswerBtnsContainer{
     display: flex; 
     flex-direction: row;
-}
-#AnswerBtnsContainer > button{
-    border: 3px, solid, blue;
+    gap: 1rem;
 }
 
-.center{
-    justify-content: center;
-    text-align: center;
-    margin: auto 0;
+#AnswerBtnsContainer > button{
+    flex: 1;
 }

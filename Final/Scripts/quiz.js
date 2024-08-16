@@ -85,42 +85,26 @@ let pri_Q4 = new QuestionData("P_Q4", "P_QE4");
 
 // Q&A for Syntax Quiz
 const QuestionList_SYNTAX = [syn_Q1, syn_Q2, syn_Q3, syn_Q4];
-const AnswerList_SYNTAX = ["S_A1", "S_A2", "S_A3", "S_A4", "S_A5", "S_A6"];
+
 //Q&A for Principle Quiz
 const QuestionList_PRINCIPLE = [pri_Q1, pri_Q2, pri_Q3, pri_Q4,];
-const AnswerList_PRINCIPLE = ["P_A1", "P_A2", "P_A3", "P_A4", "P_A5", "P_A6"];
+
 
 
 class QuizCard{
-    constructor(quizID, correctAnswerID, numOfQuestions, quizType){
+    constructor(quizID, questionData, quizType){
         this.id = quizID;
-        this.a_id = correctAnswerID;
-        this.q_amount = numOfQuestions;
+        this.data = questionData;
         this.type = quizType;
         console.log("NEW QUIZ CARD CONSTRUCTED!");
     }
 
     DisplayQuizCard() {
-        var currentQuestionList; //used to save the question list this scope uses
 
-        //Get What List of questions we are using
-        switch (this.quizType){
-            //SYNTAX
-            case QUIZTYPES.Syntax.name:
-                this.quizType = QUIZTYPES.Syntax;
-                this.currentQuestionList = QuestionList_SYNTAX;
-                break;
-            //PRINCIPLE
-            case QUIZTYPES.Principle.name:
-                this.quizType = QUIZTYPES.Principle;
-                this.currentQuestionList = QuestionList_PRINCIPLE;
-                break;
-        }
-        
         //DISPLAY QUIZ INFO
         this.UpdateQuizInfo();
         //Display Example Image
-        CreateAnswerBtns(this.q_amount, GetRandomInt(this.q_amount-1)); //Display Answers
+        CreateAnswerBtns(this.data); //Display Answers
     }
 
     UpdateQuizInfo() {
@@ -132,9 +116,6 @@ class QuizCard{
 //Function whenever a new Round Starts
 function StartRound(quizType_str){
     console.log("Starting Quiz Game");
-
-    var currentQuestionList; //used to save the question list this scope uses
-
 
     //Setting Quiz Type
     switch (quizType_str){
@@ -157,7 +138,7 @@ function StartRound(quizType_str){
     if(currRound <= MAX_ROUNDS){
         console.log(`Starting Round ${currRound} of ${MAX_ROUNDS}`);
         //Clean any previous card info
-        var card = new QuizCard(currRound-1, GetRandomInt(3), 4, quizType); //Make a new Quiz Card for the round
+        var card = new QuizCard(currRound-1, QuestionList_SYNTAX[currRound-1], quizType); //Make a new Quiz Card for the round
         
         card.DisplayQuizCard();
     }
@@ -195,26 +176,16 @@ function IncrementRound(){
     }
 }
 //Create different Buttons in the Answer Choice Sections
-function CreateAnswerBtns(amount, correctAnswerID)
-{
-    console.log(`Creating answer buttons. Correct button being: ${correctAnswerID}`)
-    var currentAnswerList = [];  //Tracks the amount of Answers have been used already generated
-
-    //Decide what answer pool we are using based on the Quiz Type
-    switch (quizType){
-        //Syntax
-        case QUIZTYPES.Syntax:
-            currentAnswerList = AnswerList_SYNTAX;
-            break;
-        //Principles
-        case QUIZTYPES.Principle:
-            currentAnswerList = AnswerList_PRINCIPLE;
-            break;
-    }
+function CreateAnswerBtns(questionData)
+{    
+    //set the Question Data from the Data given
+    let q_data = QuestionData;
+    q_data = questionData;
 
     //Data for the Correct Answer
-    var CorrectAnswerPos = GetRandomInt(amount-1)       // Button Position
-    console.log(`Corret Answer Located at Position ${CorrectAnswerPos}`);
+    var correctAnswerID = 0; //Made it to where the right answer will always be the first index
+    var correctAnswerPos = GetRandomInt(q_data.answerList.length - 1)       // Button Position
+    console.log(`Corret Answer Located at Position ${correctAnswerPos}`);
 
     //Empty Array meant to track what Answer IDs have been used already
     var usedIDs = [];
@@ -223,15 +194,16 @@ function CreateAnswerBtns(amount, correctAnswerID)
     var a_box = document.getElementById("AnswerBtnsContainer"); 
 
     //add elements to the answerBox for each answer needing displayed
-    for (i = 0; i <= amount-1 ; i++){
+    for (i = 0; i <= q_data.answerList.length-1 ; i++){
         //Create A New Button to hold the generated data
         var a_btn = document.createElement("button");
         var a_btn_txt = document.createElement("p");
         //For Setting the specific ID that will be used to print data
-        var printID = GetRandomInt(currentAnswerList.length);
+        console.log(q_data.answerList.length)
+        var printID = GetRandomInt(q_data.answerList.length-1);
 
         //Set the printing ID to the id with the correct answer;
-        if(i == CorrectAnswerPos) { printID = correctAnswerID; }
+        if(i == correctAnswerPos) { printID = correctAnswerID; }
         else{
             //get a random unused Answer ID
             GetUniqueID();
@@ -239,7 +211,7 @@ function CreateAnswerBtns(amount, correctAnswerID)
             //Nested Function used only used to verify if the printing ID has not already been used
             function GetUniqueID(){
                 //set a random ID for printing later
-                printID = GetRandomInt(currentAnswerList.length);
+                printID = GetRandomInt(q_data.answerList.length-1);
 
                 //check to see if the printing ID is an ID within the used IDs list or happens to land on the correct answer's ID
                 if (usedIDs.includes(printID) || printID == correctAnswerID){
@@ -252,7 +224,7 @@ function CreateAnswerBtns(amount, correctAnswerID)
         usedIDs.push(printID);
 
         //print an answer in the button
-        a_btn_txt.innerText = currentAnswerList[printID];
+        a_btn_txt.innerText = q_data.answerList[printID];
         
         //append the created button with the data obtained
         a_box.appendChild(a_btn);

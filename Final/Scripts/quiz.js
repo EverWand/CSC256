@@ -12,9 +12,10 @@ var quizType = QUIZTYPES.Syntax;
 
 //Data used to structure questions
 class QuestionData{
-    constructor(q_Prompt, q_Example){
+    constructor(q_Prompt, q_Example, a_list){
         this.prompt = q_Prompt;
         this.example = q_Example;
+        this.answerList = a_list;
     }
 
     DisplayQuestionData(){
@@ -49,10 +50,33 @@ class QuestionData{
 }
 
 //Syntax Questions
-let syn_Q1 = new QuestionData("S_Q1", "S_QE1");
-let syn_Q2 = new QuestionData("S_Q2", "S_QE2");
-let syn_Q3 = new QuestionData("S_Q3", "S_QE3");
-let syn_Q4 = new QuestionData("S_Q4", "S_QE4");
+let syn_Q1 = new QuestionData(
+    "What keyword is used to declare a block-scoped variable in JavaScript?", 
+    "let", 
+    ["let", "var", "const", "function"]
+);
+let syn_Q2 = new QuestionData(
+    "Which keyword is used to create a constant variable that cannot be reassigned?", 
+    "const",
+    ["const","let","var","function"]
+);
+let syn_Q3 = new QuestionData(
+    "How do you write an arrow function in JavaScript?", 
+    "() => {}",
+    ["() => {}", "function => {}", "function() => {}", "() -> {}"]
+);
+let syn_Q4 = new QuestionData(
+    "What is the correct syntax for a ternary operator in JavaScript?", 
+    "condition ? expr1 : expr2;",
+    ["condition ? expr1 : expr2;", "condition ? expr1 , expr2;" , "condition : expr1 ? expr2;" , "condition -> expr1 : expr2;"]
+);
+let syn_Q5 = new QuestionData(
+    "Which loop will execute at least once, regardless of the condition being true or false?", 
+    "do-while",
+    ["do-while", "for", "while", "for-in"]
+);
+
+
 //Principle Questions
 let pri_Q1 = new QuestionData("P_Q1", "P_QE1");
 let pri_Q2 = new QuestionData("P_Q2", "P_QE2");

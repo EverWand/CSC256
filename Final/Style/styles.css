@@ -1,10 +1,29 @@
 
+/*
+ Color Pallete:
+
+    F8F6F9 - Whisper        [Light Shades]
+    E1B37A - Harvest Gold   [light accent]
+    9B4B3F - Sepia Skin     [Dark Shade]
+    DCAF99 - Cameo          [Dark Accent]
+    D09FAF - Careys Pink    [Main Brand]
+    
+*/
+
 body{
     margin:0;
+    background-color: var(--Light_Shade);
+    /*Color Variables*/
+    --Light_Shade:#F8F6F9 ;
+    --Light_Accent: #E1B37A;
+    --Dark_Shade: #9B4B3F;
+    --Dark_Accent:#DCAF99 ;
+    --Main_Color: #D09FAF;
 }
 
 header{
-    background-color: lightgrey;
+    background-color: var(--Dark_Shade);
+    color: var(--Light_Shade)
 }
 /*====| HERO |====*/
 header > #Content > h1{
@@ -17,8 +36,8 @@ header > #Content > h2{
 }
 /*====| NAVIGATION BAR |====*/
 nav {
-    background-color: grey;
-    color: ghostwhite;
+    background-color: var(--Dark_Accent);
+    color: var(--Light_Shade);
     padding: .5rem 30%;
     position: sticky;
 }
@@ -38,7 +57,7 @@ nav > ul > a > li{
     width: 133px;
 }
 nav > ul > a > li :hover{
-    color: darkgrey;
+    color: #b18e7c;
 }
 
 
@@ -55,8 +74,8 @@ nav > ul > a > li :hover{
 }
 
 footer{
-    background-color: grey;
-    color: ghostwhite;
+    background-color: var(--Dark_Shade);
+    color: var(--Light_Shade);
     text-align: center;
 }
 

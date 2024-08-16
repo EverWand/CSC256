@@ -1,23 +1,6 @@
 
-#AnswerBtnsContainer{
-    display: flex; 
-    flex-direction: row;
-    gap: 1rem;
-}
 
-#AnswerBtnsContainer > button{
-    flex: 1;
-    background-color: lightgrey;
-    border:3px solid black;
-    border-radius: 15px;
-}
-#AnswerBtnsContainer > button :hover{
-    color:ghostwhite;
-}
 
-#AnswerBtnsContainer > button :active{
-    background-color: grey;
-}
 
 #RoundDisplay{
     font-size: 1.5rem;
@@ -26,10 +9,37 @@
     height: fit-content;
     max-height: 3rem;
     width: fit-content;
-    background-color: ghostwhite;
-    border: 5px solid grey;
-    border-radius: 15px;
+    background-color: var(--Light_Shade);
+    color: var(--Dark_Shade);
+    border-radius: 10px;
     padding: 2rem;
     align-self: center;
     align-items: center;
+}
+
+#QuestionContainer{
+    color: var(--Dark_Shade);
+}
+
+#AnswerBtnsContainer{
+    display: flex; 
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#AnswerBtnsContainer > button{
+    flex: 1;
+    background-color: var(--Light_Accent);
+    color: var(--Light_Shade);
+    font-weight: bolder;
+    border:0px solid var(--Dark_Shade);
+    border-radius: 10px;
+
+}
+#AnswerBtnsContainer > button :hover{
+    color: #e2e2e2;
+}
+
+#AnswerBtnsContainer > button :active{
+    background-color: var(--Dark_Shade);
 }

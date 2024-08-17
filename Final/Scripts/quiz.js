@@ -1,5 +1,5 @@
 //Amount of round in the quiz
-const MAX_ROUNDS = 3;
+const MAX_ROUNDS = 5;
 var currRound = 1;
 
 //Different Types of Quizes
@@ -84,7 +84,7 @@ let pri_Q3 = new QuestionData("P_Q3", "P_QE3");
 let pri_Q4 = new QuestionData("P_Q4", "P_QE4");
 
 // Q&A for Syntax Quiz
-const QuestionList_SYNTAX = [syn_Q1, syn_Q2, syn_Q3, syn_Q4];
+const QuestionList_SYNTAX = [syn_Q1, syn_Q2, syn_Q3, syn_Q4, syn_Q5];
 
 //Q&A for Principle Quiz
 const QuestionList_PRINCIPLE = [pri_Q1, pri_Q2, pri_Q3, pri_Q4,];
@@ -103,8 +103,11 @@ class QuizCard{
 
         //DISPLAY QUIZ INFO
         this.UpdateQuizInfo();
-        //Display Example Image
-        CreateAnswerBtns(this.data); //Display Answers
+
+        //Ensure there is no children within the Answer's Box
+        DestroyAnswerBtns();
+        //Display buttons used to answer
+        CreateAnswerBtns(this.data);
     }
 
     UpdateQuizInfo() {
@@ -163,7 +166,7 @@ function updateRoundInfo(){
 
 }
 //Adds what round the user is on
-function IncrementRound(){
+function NextRound(){
     currRound++;
 
     //Clamps round from 0 to the set Max Rounds
@@ -174,6 +177,8 @@ function IncrementRound(){
     else if(currRound > MAX_ROUNDS){
         currRound = MAX_ROUNDS;
     }
+
+    StartRound();
 }
 //Create different Buttons in the Answer Choice Sections
 function CreateAnswerBtns(questionData)
@@ -231,6 +236,14 @@ function CreateAnswerBtns(questionData)
         a_btn.appendChild(a_btn_txt);
     }
 }
+
+//destroys the buttons used to answer
+function DestroyAnswerBtns(){
+    let a_box = document.getElementById("AnswerBtnsContainer");
+
+    a_box.replaceChildren(); //replace all of the answer box's children with nothing
+}
+
 //Getting a random intenger within a range
 function GetRandomInt(max_range){
     let ranInt = Math.floor((Math.random()*max_range));

@@ -36,15 +36,18 @@
         <section>
             <div id="Content" class="center">
                 <!--Task/Question-->
-                <div id="QuestionContainer">                
-                    <p id="QuestionPrompt"></p>
+                <div id="QuestionContent">                
+                    <h2 id="QuestionPrompt"></h2>
                     <div id = "QuestionExample"></div>
                 </div>
-                <!--Place to put Answer-->
-               <div id="AnswerBox"></div>
-                <!--Options-->
-                <div id="AnswerBtnsContainer"></div>
+                <div id="AnswerContent">
+                    <!--Place to put Answer-->
+                <div id="AnswerBox" class="center"></div>
+                    <!--Options-->
+                    <div id="AnswerBtnsContainer"></div>
+                </div>
             </div>
+            <button class= "primary_btn"  onclick="NextRound()"> Next Round Test </button>
         </section>
         <script>
             StartRound("Syntax");

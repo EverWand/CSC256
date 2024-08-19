@@ -49,7 +49,7 @@
     color: #e2e2e2;
 }
 
-/*---|Correct Answer|---*/
-.a_correct{
-    background-color: green;
+.a_option:active:hover
+{
+    background-color: var(--Dark_Shade);
 }

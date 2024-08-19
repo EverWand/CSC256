@@ -2,22 +2,14 @@
 const MAX_ROUNDS = 5;
 var currRound = 1;
 
-//Different Types of Quizes
-const QUIZTYPES = {
-    Syntax: {id: 0 , name:"Syntax"},
-    Principle: {id: 1, name: "Principle"}
-}
-//tracks the current quiz Type [Default is Syntax]
-var quizType = QUIZTYPES.Syntax;
-
 //Data used to structure questions
 class QuestionData{
-    constructor(q_Prompt, q_Example, a_list){
+    constructor(q_Prompt, a_list){
         this.prompt = q_Prompt;
-        this.example = q_Example;
         this.answerList = a_list;
     }
 
+    //Displays the data from the Question Class
     DisplayQuestionData(){
         console.log(`Displaying Question Data for Quiz Page`);
 
@@ -28,7 +20,6 @@ class QuestionData{
         //create ether a text example or an image
         var exampleBox;
         let examplePrint = "";
-        examplePrint = this.example;
 
         //Is the Example an image?
         if(examplePrint.includes(".png")){
@@ -49,53 +40,40 @@ class QuestionData{
     }
 }
 
-//Syntax Questions
+//Syntax Questions - JavaScript
+//--Q1
 let syn_Q1 = new QuestionData(
     "What keyword is used to declare a block-scoped variable in JavaScript?", 
-    "let", 
     ["let", "var", "const", "function"]
 );
+//--Q2
 let syn_Q2 = new QuestionData(
     "Which keyword is used to create a constant variable that cannot be reassigned?", 
-    "const",
     ["const","let","var","function"]
 );
+//--Q3
 let syn_Q3 = new QuestionData(
     "How do you write an arrow function in JavaScript?", 
-    "() => {}",
     ["() => {}", "function => {}", "function() => {}", "() -> {}"]
 );
+//--Q4
 let syn_Q4 = new QuestionData(
     "What is the correct syntax for a ternary operator in JavaScript?", 
-    "condition ? expr1 : expr2;",
     ["condition ? expr1 : expr2;", "condition ? expr1 , expr2;" , "condition : expr1 ? expr2;" , "condition -> expr1 : expr2;"]
 );
+//--Q5
 let syn_Q5 = new QuestionData(
     "Which loop will execute at least once, regardless of the condition being true or false?", 
-    "do-while",
     ["do-while", "for", "while", "for-in"]
 );
-
-
-//Principle Questions
-let pri_Q1 = new QuestionData("P_Q1", "P_QE1");
-let pri_Q2 = new QuestionData("P_Q2", "P_QE2");
-let pri_Q3 = new QuestionData("P_Q3", "P_QE3");
-let pri_Q4 = new QuestionData("P_Q4", "P_QE4");
 
 // Q&A for Syntax Quiz
 const QuestionList_SYNTAX = [syn_Q1, syn_Q2, syn_Q3, syn_Q4, syn_Q5];
 
-//Q&A for Principle Quiz
-const QuestionList_PRINCIPLE = [pri_Q1, pri_Q2, pri_Q3, pri_Q4,];
-
-
-
 class QuizCard{
-    constructor(quizID, questionData, quizType){
+    constructor(quizID, questionData){
         this.id = quizID;
         this.data = questionData;
-        this.type = quizType;
         console.log("NEW QUIZ CARD CONSTRUCTED!");
     }
 
@@ -111,29 +89,15 @@ class QuizCard{
     }
 
     UpdateQuizInfo() {
-        let questionSet = QuestionList_SYNTAX[this.id];
+        const questionSet = QuestionList_SYNTAX[this.id];
         questionSet.DisplayQuestionData();
     }
 }
 
 //Function whenever a new Round Starts
-function StartRound(quizType_str){
+function StartRound(){
     console.log("Starting Quiz Game");
-
-    //Setting Quiz Type
-    switch (quizType_str){
-        //SYNTAX
-        case QUIZTYPES.Syntax.name:
-            quizType = QUIZTYPES.Syntax;
-            currentQuestionList = QuestionList_SYNTAX;
-            break;
-        //PRINCIPLE
-        case QUIZTYPES.Principle.name:
-            quizType = QUIZTYPES.Principle;
-            currentQuestionList = QuestionList_PRINCIPLE;
-            break;
-    }
-
+ 
     //Fill in Header Info
     FillHeader();
 
@@ -141,21 +105,22 @@ function StartRound(quizType_str){
     if(currRound <= MAX_ROUNDS){
         console.log(`Starting Round ${currRound} of ${MAX_ROUNDS}`);
         //Clean any previous card info
-        var card = new QuizCard(currRound-1, QuestionList_SYNTAX[currRound-1], quizType); //Make a new Quiz Card for the round
+        var card = new QuizCard(currRound-1, QuestionList_SYNTAX[currRound-1]); //Make a new Quiz Card for the round
         
         card.DisplayQuizCard();
     }
 }
 
+//Fills in the Quiz's Header Information
 function FillHeader(){
     //Diplay the Correct Quiz Label
     let QuizLabel = document.getElementById("QuizLabel");
-    QuizLabel.innerText = quizType.name;
+    QuizLabel.innerText = "Syntax";
     //update displays to the current round information
-    updateRoundInfo();
+    UpdateRoundInfo();
 }
-
-function updateRoundInfo(){
+//Updates the Round Info
+function UpdateRoundInfo(){
     //====Update Round info====
     //current round display
     let currDisplay = document.getElementById("CurrRoundDisplay");
@@ -187,53 +152,37 @@ function CreateAnswerBtns(questionData)
     let q_data = QuestionData;
     q_data = questionData;
 
-    //Data for the Correct Answer
-    var correctAnswerID = 0; //Made it to where the right answer will always be the first index
-    var correctAnswerPos = GetRandomInt(q_data.answerList.length - 1)       // Button Position
-    console.log(`Corret Answer Located at Position ${correctAnswerPos}`);
-
-    //Empty Array meant to track what Answer IDs have been used already
-    var usedIDs = [];
+    //Save the Correct Answer [assumed it's held in the first index of answers]
+    const correctAnswer = q_data.answerList[0];
+    console.log(`Corret Answer is: ${correctAnswer}`);
 
     //reference for the Container that will hold all of the answer buttons
-    var a_box = document.getElementById("AnswerBtnsContainer"); 
+    const a_box = document.getElementById("AnswerBtnsContainer"); 
+    //Shuffle the Answer List
+    const a_list = ShuffleArray(q_data.answerList);
 
-    //add elements to the answerBox for each answer needing displayed
-    for (i = 0; i <= q_data.answerList.length-1 ; i++){
+    //===| Generating Answer Buttons |===
+    for (i = 0; i <= a_list.length-1 ; i++){
+        //saves the answer from this current iteration
+        const answer = a_list[i];
         //Create A New Button to hold the generated data
-        var a_btn = document.createElement("button");
-        var a_btn_txt = document.createElement("p");
-        //For Setting the specific ID that will be used to print data
-        console.log(q_data.answerList.length)
-        var printID = GetRandomInt(q_data.answerList.length-1);
+        const a_btn = document.createElement("button");
+        const a_btn_txt = document.createElement("p");
 
-        //Set the printing ID to the id with the correct answer;
-        if(i == correctAnswerPos) { printID = correctAnswerID; }
-        else{
-            //get a random unused Answer ID
-            GetUniqueID();
+        //Print an answer in the button
+        a_btn_txt.innerText = a_list[i];
 
-            //Nested Function used only used to verify if the printing ID has not already been used
-            function GetUniqueID(){
-                //set a random ID for printing later
-                printID = GetRandomInt(q_data.answerList.length-1);
-
-                //check to see if the printing ID is an ID within the used IDs list or happens to land on the correct answer's ID
-                if (usedIDs.includes(printID) || printID == correctAnswerID){
-                    GetUniqueID();  //Recursively loop until a Unique ID is found
-                }
-            }
-        }
-
-        //Save the found Print ID to the used IDs list
-        usedIDs.push(printID);
-
-        //print an answer in the button
-        a_btn_txt.innerText = q_data.answerList[printID];
-        
         //append the created button with the data obtained
         a_box.appendChild(a_btn);
         a_btn.appendChild(a_btn_txt);
+
+        //Adding Option class
+        a_btn.classList.add("a_option");
+        //if the iterated answer is the correct answer
+         if(answer == correctAnswer){
+            //add the correct answer class
+            a_btn.classList.add("a_correct");
+        }
     }
 }
 
@@ -244,8 +193,23 @@ function DestroyAnswerBtns(){
     a_box.replaceChildren(); //replace all of the answer box's children with nothing
 }
 
+
+//====| General Functions |====
 //Getting a random intenger within a range
 function GetRandomInt(max_range){
     let ranInt = Math.floor((Math.random()*max_range));
     return ranInt;
+}
+function ShuffleArray(array){
+    //Create a temporary array that's a copy of the specific array
+    let tempArray = array.slice();
+
+    //Goes throuigh each index of the temp array
+    for (let i = tempArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        //swaps the random array item with the incremented array item
+        [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+    }
+
+    return tempArray;   // returns shuffled temporary array
 }

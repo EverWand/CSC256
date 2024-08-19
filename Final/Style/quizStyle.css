@@ -1,3 +1,4 @@
+/*=====| ROUND |=====*/
 #RoundDisplay{
     font-size: 1.5rem;
     display: flex;
@@ -13,28 +14,29 @@
     align-items: center;
 }
 
+/*=====| QUESTION |=====*/
 #QuestionContent{
     color: var(--Dark_Shade);
 }
+
+/*=====| ANSWERS |=====*/
 #AnswerContent{
     display: flex;
     flex-direction: column;
     gap: 6rem;
 }
-
 #AnswerBox{
     border: 3px, solid, var(--Main_Color);
     width: 300px;
     height: 50px;
 }
-
 #AnswerBtnsContainer{
     display: flex; 
     flex-direction: row;
     gap: 1rem;
 }
-
-#AnswerBtnsContainer > button{
+/*---|Answer Options|---*/
+.a_option{
     flex: 1;
     background-color: var(--Light_Accent);
     color: var(--Light_Shade);
@@ -43,10 +45,11 @@
     border-radius: 10px;
 
 }
-#AnswerBtnsContainer > button :hover{
+.a_option :hover{
     color: #e2e2e2;
 }
 
-#AnswerBtnsContainer > button :active{
-    background-color: var(--Dark_Shade);
+/*---|Correct Answer|---*/
+.a_correct{
+    background-color: green;
 }

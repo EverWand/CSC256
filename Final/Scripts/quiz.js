@@ -70,6 +70,7 @@ let syn_Q5 = new QuestionData(
 // Q&A for Syntax Quiz
 const QuestionList_SYNTAX = [syn_Q1, syn_Q2, syn_Q3, syn_Q4, syn_Q5];
 
+//CLASS Use to create The Information of the quiz pages.
 class QuizCard{
     constructor(quizID, questionData){
         this.id = quizID;
@@ -78,14 +79,13 @@ class QuizCard{
     }
 
     DisplayQuizCard() {
-
         //DISPLAY QUIZ INFO
         this.UpdateQuizInfo();
 
         //Ensure there is no children within the Answer's Box
-        DestroyAnswerBtns();
-        //Display buttons used to answer
-        CreateAnswerBtns(this.data);
+        DestroyAnswerOptions();
+        //Display options used to answer
+        CreateAnswerOptions(this.data);
     }
 
     UpdateQuizInfo() {
@@ -94,6 +94,7 @@ class QuizCard{
     }
 }
 
+//====| QUIZ INITIALIZATION FUNCTIONS | ====
 //Function whenever a new Round Starts
 function StartRound(){
     console.log("Starting Quiz Game");
@@ -130,11 +131,86 @@ function UpdateRoundInfo(){
     maxDiplay.innerText = MAX_ROUNDS;
 
 }
+
+
+//Create different options in the Answer Choice Sections
+function CreateAnswerOptions(questionData)
+{    
+    //set the Question Data from the Data given
+    let q_data = QuestionData;
+    q_data = questionData;
+
+    //Save the Correct Answer [assumed it's held in the first index of answers]
+    const correctAnswer = q_data.answerList[0];
+    console.log(`Correct Answer is: ${correctAnswer}`);
+
+    //reference for the Container that will hold all of the answer options
+    const a_box = document.getElementById("AnswerOptionsContainer"); 
+    //Shuffle the Answer List
+    const a_list = ShuffleArray(q_data.answerList);
+
+    //===| Generating Answer Options |===
+    for (i = 0; i <= a_list.length-1 ; i++){
+        //saves the answer from this current iteration
+        const answer = a_list[i];
+        //Create A New option to hold the generated data
+        const a_option = document.createElement("div");
+        const a_option_txt = document.createElement("p");
+
+        //Print an answer in the option
+        a_option_txt.innerText = a_list[i];
+
+        //append the created option with the data obtained
+        a_box.appendChild(a_option);
+        a_option.appendChild(a_option_txt);
+
+        //Adding Option class
+        a_option.classList.add("a_option");
+        //if the iterated answer is the correct answer
+         if(answer == correctAnswer){
+            //add the correct answer class
+            a_option.classList.add("a_correct");
+        }
+
+        //===| ADDING OPTION FUNCTIONALITY |===
+        a_option.onclick = function() {
+            CheckAnswerOption(a_option);
+        };
+    }
+}
+//destroys the options used to answer
+function DestroyAnswerOptions(){
+    let a_box = document.getElementById("AnswerOptionsContainer");
+
+    a_box.replaceChildren(); //replace all of the answer box's children with nothing
+}
+
+//====| QUIZ FUNCTIONS | ====
+function CheckAnswerOption(option){
+    //is the answer a correct answer?
+    if (option.classList.contains("a_correct"))
+    {
+        //do we have more round in the quiz?
+        if(currRound != MAX_ROUNDS){
+            NextRound();    //go to next round
+        }
+        else{
+            //alert the user they won
+            alert("Congratulations! you completed the Quiz!");
+            window.location.replace("../Pages/index.html")
+        }
+    }
+    else{
+        //alert player that the submission is not correct
+        alert("This is not the correct answer");
+        StartRound();   //restart the round
+    }
+}
 //Adds what round the user is on
 function NextRound(){
     currRound++;
 
-    //Clamps round from 0 to the set Max Rounds
+    //Clamps round from 1 to the set Max Rounds
     if(currRound <= 0)
         {
             currRound = 1; 
@@ -143,63 +219,15 @@ function NextRound(){
         currRound = MAX_ROUNDS;
     }
 
-    StartRound();
+    StartRound();   //Start the new round
 }
-//Create different Buttons in the Answer Choice Sections
-function CreateAnswerBtns(questionData)
-{    
-    //set the Question Data from the Data given
-    let q_data = QuestionData;
-    q_data = questionData;
-
-    //Save the Correct Answer [assumed it's held in the first index of answers]
-    const correctAnswer = q_data.answerList[0];
-    console.log(`Corret Answer is: ${correctAnswer}`);
-
-    //reference for the Container that will hold all of the answer buttons
-    const a_box = document.getElementById("AnswerBtnsContainer"); 
-    //Shuffle the Answer List
-    const a_list = ShuffleArray(q_data.answerList);
-
-    //===| Generating Answer Buttons |===
-    for (i = 0; i <= a_list.length-1 ; i++){
-        //saves the answer from this current iteration
-        const answer = a_list[i];
-        //Create A New Button to hold the generated data
-        const a_btn = document.createElement("button");
-        const a_btn_txt = document.createElement("p");
-
-        //Print an answer in the button
-        a_btn_txt.innerText = a_list[i];
-
-        //append the created button with the data obtained
-        a_box.appendChild(a_btn);
-        a_btn.appendChild(a_btn_txt);
-
-        //Adding Option class
-        a_btn.classList.add("a_option");
-        //if the iterated answer is the correct answer
-         if(answer == correctAnswer){
-            //add the correct answer class
-            a_btn.classList.add("a_correct");
-        }
-    }
-}
-
-//destroys the buttons used to answer
-function DestroyAnswerBtns(){
-    let a_box = document.getElementById("AnswerBtnsContainer");
-
-    a_box.replaceChildren(); //replace all of the answer box's children with nothing
-}
-
-
 //====| General Functions |====
-//Getting a random intenger within a range
+//Getting a random intenger within a given range
 function GetRandomInt(max_range){
     let ranInt = Math.floor((Math.random()*max_range));
     return ranInt;
 }
+//Shuffles the values of a given array
 function ShuffleArray(array){
     //Create a temporary array that's a copy of the specific array
     let tempArray = array.slice();

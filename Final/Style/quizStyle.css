@@ -1,3 +1,6 @@
+
+/*STYLES MEANT FOR THE QUIZ PAGE SPECIFICALLY*/
+
 /*=====| ROUND |=====*/
 #RoundDisplay{
     font-size: 1.5rem;
@@ -20,16 +23,19 @@
 }
 
 /*=====| ANSWERS |=====*/
+/*Content about the answer options*/
 #AnswerContent{
     display: flex;
     flex-direction: column;
     gap: 6rem;
 }
+/*Box to place answers in to submit them*/
 #AnswerBox{
     border: 3px, solid, var(--Main_Color);
     width: 300px;
     height: 50px;
 }
+/*what holds the options*/
 #AnswerOptionsContainer{
     display: flex; 
     flex-direction: row;
@@ -45,10 +51,11 @@
     border-radius: 10px;
 
 }
+/*When an option is hovered*/
 .a_option :hover{
     color: #e2e2e2;
 }
-
+/*When the mouse is clicked down on an option*/
 .a_option:active:hover
 {
     background-color: var(--Dark_Shade);

@@ -10,6 +10,7 @@
     
 */
 
+/*Setting Style for the website's body section*/
 body{
     margin:0;
     background-color: var(--Light_Shade);
@@ -55,13 +56,16 @@ nav > ul > a {
     color: inherit;   
 }
 
+/*List items inside of the Navigation menu*/
 nav > ul > a > li{
     width: 133px;
 }
+/*Hovered List items inside of the Navigation menu*/
 nav > ul > a > li :hover{
     color: #b18e7c;
 }
 
+/*What to do with general content sections*/
 #Content{
     padding: 4rem 10%;
 }

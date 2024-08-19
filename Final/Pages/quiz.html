@@ -3,8 +3,10 @@
 <html>
     <head>
         <title>CSC256 | Final</title>
+        <!--Linking the Styles sheets to document--> 
         <link rel="stylesheet" type="text/css" href="../Style/styles.css">
         <link rel="stylesheet" type="text/css" href="../Style/quizStyle.css">
+        <!--Adding a JavaScript program to the document--> 
         <script src="../Scripts/quiz.js"></script>
     </head>
     <body>
@@ -21,10 +23,13 @@
         </nav>
         <!--HERO SECTION-->
         <header>
+            <!--main page content-->
             <div id="Content" style="display: flex; justify-content: space-around;">
+                <!--Label for the quiz-->
                 <h1 id="QuizLabel"></h1>
                 <div style="text-align: center;">
                     <h2>JavaScript</h2>
+                    <!--Display for the amount of round in the quiz-->
                     <div id = "RoundDisplay">
                         <h1 id = "CurrRoundDisplay"></h1>
                         <h1> / </h1>
@@ -33,22 +38,25 @@
                 </div>
             </div>
         </header>
+        <!--MAIN CONTENT SECTION-->
         <section>
             <div id="Content" class="center">
                 <!--Task/Question-->
                 <div id="QuestionContent">                
                     <h2 id="QuestionPrompt"></h2>
-                    <div id = "QuestionExample"></div>
                 </div>
+                <!--Content that displays the Answer Options-->
                 <div id="AnswerContent">
-                    <!--Place to put Answer-->
+                    <!--Place answer in here to submit it-->
                 <div id="AnswerBox" class="center"></div>
                     <!--Options-->
                     <div id="AnswerOptionsContainer"></div>
                 </div>
             </div>
         </section>
+        <!--PAGE FUNCTIONALITY SCRIPT-->
         <script>
+            //Start the Round on load
             StartRound();
         </script>
         <!--FOOTER-->
@@ -56,7 +64,7 @@
             <div id= "Content">
                 <p>Page By: Lucas Foxworthy</p>
                 <hr>
-                <p>Last Updated: 8/7/2024</p>
+                <p>Last Updated: 8/18/2024</p>
             </div>
         </footer>
     </body>

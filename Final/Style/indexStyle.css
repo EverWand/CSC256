@@ -1,23 +1,27 @@
+/*STYLES MEANT FOR THE MAIN PAGE SPECIFICALLY*/
 
+
+/*For the Content within sections*/
 section > #Content{
     display: flex; 
     flex-direction: row;
     justify-content: space-around;
     gap:10rem;
 }
-
+/*Left Side of the content box*/
 #content-Left{
     align-self:flex-start;
     max-width: 650px;
 }
+/*Right side of the content box*/
 #content-Right{
     align-self:flex-end;
     background-color: #f5f5f5;
-    display:flex; 
+    display:flex;
     flex-direction:column;
     gap: 1rem;
 }
-
+/*The Logo within the right-sided content*/
 #content-Right > img{
     max-width: 650px;
     border-radius: 15px;
